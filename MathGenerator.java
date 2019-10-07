@@ -8,6 +8,8 @@ public class MathGenerator {
     private int answer;
     public static int questions = 10;
 
+    public MathObject[] questionList = new MathObject[questions];
+    //array of questions to fill out
 
     // constructor
     public MathGenerator() {
@@ -70,10 +72,7 @@ public class MathGenerator {
                 answer = value1 - value2;
             }
 
-            // adding values into an array
-            easy[0] = value1;
-            easy[1] = value2;
-            easy[2] = answer;
+            questionList[i] = new MathObject[value1, value2, ]
         }
     }
 
