@@ -150,37 +150,37 @@ public class MathGenerator {
 
 
     /**
-    //main method
-    public static void main(String[] args) {
-        MathGenerator math = new MathGenerator();
-        System.out.println("Hello! Welcome to the Math Games!");
-        Scanner scan = new Scanner(System.in);
-        int num = 0;
-        String input = " ";
-        do {
-            System.out.println("Press 1 if you are a student, or 2 if you are a teacher.");
-            num = scan.nextInt();
-            if (num == 1) {
-                System.out.println("What is your name?");
-                input = scan.nextLine();
-                Student student = new Student(input);
-                System.out.println("Okay, " + input + ". Let's start.");
-            } else if (num == 2) {
-                Teacher teacher = new Teacher ();
-                System.out.println("Would you like to add some math problems? (Y/N)");
-                input = scan.nextLine();
-                input.toUpperCase();
-                if (input == "Y") {
-                    math.teacherAddOns();
-                } else {
-                    System.out.println("This is the student's current score.");
-                    // need to code by being able to look at every student's scores.
-                }
-            } else {
+     //main method
+     public static void main(String[] args) {
+     MathGenerator math = new MathGenerator();
+     System.out.println("Hello! Welcome to the Math Games!");
+     Scanner scan = new Scanner(System.in);
+     int num = 0;
+     String input = " ";
+     do {
+     System.out.println("Press 1 if you are a student, or 2 if you are a teacher.");
+     num = scan.nextInt();
+     if (num == 1) {
+     System.out.println("What is your name?");
+     input = scan.nextLine();
+     Student student = new Student(input);
+     System.out.println("Okay, " + input + ". Let's start.");
+     } else if (num == 2) {
+     Teacher teacher = new Teacher ();
+     System.out.println("Would you like to add some math problems? (Y/N)");
+     input = scan.nextLine();
+     input.toUpperCase();
+     if (input == "Y") {
+     math.teacherAddOns();
+     } else {
+     System.out.println("This is the student's current score.");
+     // need to code by being able to look at every student's scores.
+     }
+     } else {
 
-            }
-        } while (num == 1 || num == 2);
-    }
+     }
+     } while (num == 1 || num == 2);
+     }
      **/
 }
 
