@@ -63,6 +63,15 @@ public class MathGenerator {
      *
      */
 
+    public void generateEquation(int lowBound, int highBound)
+    {
+        for(int i = 0; i < questions, i++)
+        {
+            int value1 = (int)Math.abs(Math.random() * highBound);
+        }
+    }
+
+
     public void easyEquations() {
         for (int i = 0; i < questions; i++) {
             int value1 = (int) (Math.random() * 21);
@@ -75,7 +84,7 @@ public class MathGenerator {
                 answer = value1 + value2;
             } else {
                 answer = value1 - value2;
-            }
+
 
             questionList[i] = new MathObject(value1, value3, value2, answer);
         }
@@ -85,7 +94,7 @@ public class MathGenerator {
      * This method does the same as the above method, except it will have random
      * numbers from 20-60.
      */
-    public void mediumEquations() {
+    public void mediumEquations(){
         for (int i = 0; i < questions; i++) {
             int value1 = (int) (Math.random() * 61 + 20);
             // so that when subtracting, it does not become negative;
@@ -110,7 +119,7 @@ public class MathGenerator {
      */
     public void hardEquations() {
         for (int i = 0; i < questions; i++) {
-            int value1 = (int) (Math.random() * 101 + 60);
+            int value1 = (int) (Math.random() * 100 + 60);
             // so that when subtracting, it does not become negative;
             int value2 = (int) (Math.random() * 100 + 60) - value1;
             // tells if plus or minus sign
@@ -127,26 +136,15 @@ public class MathGenerator {
         }
     }
 
-    /**
-     * This method checks to see if the student's answer is correct or not.
-     *
-     * @param input The student's answer
-     * @return True if the answer is correct, false if it is not
-     */
-    public static boolean correctAnswer(int input) {
-        if (easy[2] == input || medium[2] == input || hard[2] == input) {
-            return true;
-        }
-        return false;
-    }
-
+    
     /**
      * This allows the teacher to input their own math problems if they wish.
      * @return
      */
-    //public static int[] teacherAddOns() {
-
-    //}
+    public static int[] teacherAddOns() {
+        // TODO: 10/7/2019
+        return null;
+    }
 
 
     /**
