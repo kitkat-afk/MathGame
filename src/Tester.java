@@ -3,19 +3,9 @@ public class Tester {
     {
         MathGenerator t = new MathGenerator();
 
-        t.easyEquations();
-
-        for(int i = 0; i < t.questionList.length; i++)
-            System.out.println(t.questionList[i]);
-
-        t.mediumEquations();
-
-        for(int i = 0; i < t.questionList.length; i++)
-            System.out.println(t.questionList[i]);
-
-        t.hardEquations();
-
-        for(int i = 0; i < t.questionList.length; i++)
-            System.out.println(t.questionList[i]);
+        t.generateEquation(100);
+        for(int i = 0; i < 10; i++) {
+            System.out.println(t.questionList[i].toString());
+        }
     }
 }
