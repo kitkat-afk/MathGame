@@ -6,6 +6,8 @@ public class Main {
     Character c;
     Database db;
     Scanner scan;
+    Enemy e;
+
 
     // 0 - easy 1- medium 2- hard
     int difficulty;
@@ -31,6 +33,44 @@ public class Main {
 
 
         c = new Character(diff, name, chara);
+
+
+        m.generateEquation(5);
+
+        attackEnemy(m.questionList);
+
+
+    }
+
+    public void attackEnemy(MathObject[] questions)
+    {
+        int response = 0;
+
+        for(int i = 0; i < questions.length; i++)
+        {
+            System.out.println("What is " + questions[i].getOne() + " " + questions[i].getOp() + " " + questions[i].getTwo() + " ?");
+            response = scan.nextInt();
+
+            if(response == questions[i].getSum()) {
+                System.out.println("Correct.");
+                continue;
+            }
+            else
+            {
+                System.out.println("Incorrect. The correct answer was: " + questions[i].getSum());
+                c.takeDamage(25);
+
+                if(c.getTotalHP() <= 0 ) {
+                    System.out.println("Game Over.");
+                    break;
+                }
+            }
+        }
+    }
+
+    public void enemyAttack()
+    {
+
     }
 
 }

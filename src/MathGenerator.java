@@ -1,5 +1,4 @@
 import java.lang.Math;
-import java.util.Scanner;
 
 public class MathGenerator {
     public static int questions = 10;
@@ -8,9 +7,7 @@ public class MathGenerator {
     //array of questions to fill out
 
     // constructor
-    public MathGenerator() {
-
-    }
+    public MathGenerator() { }
 
 
     /**
@@ -19,9 +16,9 @@ public class MathGenerator {
      * always be larger to prevent negative numbers.
      * @param highBound the largest number allowed to be generated, exclusive
      */
-    public void generateEquation(int highBound)
+    public void generateEquation(int highBound, int numQuestions)
     {
-        for(int i = 0; i < questions; i++)
+        for(int i = 0; i < numQuestions; i++)
         {
             value1 = (int)Math.abs(Math.random() * highBound);
             value2 = (int)Math.abs(Math.random() * highBound);
