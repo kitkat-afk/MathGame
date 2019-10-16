@@ -3,16 +3,25 @@ public class Enemy {
     public int totalHP;
     private MathGenerator m;
     public MathObject[] questionList;
-    public final int EASY = 10, MED = 51, HARD = 100;
+    private final int EASY = 10, MED = 51, HARD = 100;
 
 
-    public Enemy(int HP, String enemy)
+    public Enemy(int HP, String enemy, int difficulty)
     {
+
         totalHP = HP;
         enemy_type = enemy;
         m = new MathGenerator();
         //monster has 50 HP, each question does 10 points of damage
-        questionList = m.generateEquation();
+
+        if(difficulty == 0)
+            difficulty = EASY;
+        else if (difficulty == 1)
+            difficulty = MED;
+        else
+            difficulty = HARD;
+
+        this.questionList = m.generateEquation(difficulty, 10);
     }
 
     public int getTotalHP() {

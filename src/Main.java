@@ -33,11 +33,10 @@ public class Main {
 
 
         c = new Character(diff, name, chara);
+        //db.createFile();
+        e = new Enemy(50, "GhostOne",diff);
 
-
-        m.generateEquation(5);
-
-        attackEnemy(m.questionList);
+        attackEnemy(e.questionList);
 
 
     }
@@ -51,6 +50,7 @@ public class Main {
             System.out.println("What is " + questions[i].getOne() + " " + questions[i].getOp() + " " + questions[i].getTwo() + " ?");
             response = scan.nextInt();
 
+
             if(response == questions[i].getSum()) {
                 System.out.println("Correct.");
                 continue;
@@ -58,6 +58,7 @@ public class Main {
             else
             {
                 System.out.println("Incorrect. The correct answer was: " + questions[i].getSum());
+                questions[i].setAnswerCorrect(false);
                 c.takeDamage(25);
 
                 if(c.getTotalHP() <= 0 ) {

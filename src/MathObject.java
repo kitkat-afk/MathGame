@@ -1,5 +1,6 @@
 public class MathObject {
     private int one, two, sum, op;
+    private boolean answerCorrect;
     //if the operand is plus, set as 0, else, set as one.
 
     public MathObject(int digitOne, int operand, int digitTwo, int result)
@@ -8,6 +9,7 @@ public class MathObject {
         op = operand;
         two = digitTwo;
         sum = result;
+        answerCorrect = true;
     }
 
     public int getOne() {
@@ -27,6 +29,15 @@ public class MathObject {
             return "+";
         else
             return "-";
+    }
+
+    public boolean isAnswerCorrect() {
+        return answerCorrect;
+    }
+
+    public void setAnswerCorrect(boolean tf)
+    {
+        answerCorrect = tf;
     }
 
     @Override

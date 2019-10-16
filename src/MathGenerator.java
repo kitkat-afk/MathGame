@@ -3,7 +3,7 @@ import java.lang.Math;
 public class MathGenerator {
     public static int questions = 10;
     private int value1, value2;
-    public MathObject[] questionList = new MathObject[questions];
+    public MathObject[] questionList;
     //array of questions to fill out
 
     // constructor
@@ -16,8 +16,10 @@ public class MathGenerator {
      * always be larger to prevent negative numbers.
      * @param highBound the largest number allowed to be generated, exclusive
      */
-    public void generateEquation(int highBound, int numQuestions)
+    public MathObject[] generateEquation(int highBound, int numQuestions)
     {
+         questionList = new MathObject[questions];
+
         for(int i = 0; i < numQuestions; i++)
         {
             value1 = (int)Math.abs(Math.random() * highBound);
@@ -48,6 +50,8 @@ public class MathGenerator {
                 questionList[i] = new MathObject(value1, operand, value2, answer);
             }
         }
+
+        return questionList;
     }
 
     

@@ -1,5 +1,3 @@
-package com.company;
-
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.io.*;
@@ -28,7 +26,7 @@ public class Database {
 
         for (int i = 0; i < files.size(); i++) {
             // Checking if the username is in the system
-            if (files.get(i).username.equals(input) == true) {
+            if (files.get(i).name.equals(input) == true) {
                 return i;
             } else {
                 System.out.println("Oops, your username is not in the system");
@@ -43,8 +41,7 @@ public class Database {
      *
      * @return The character the user creates or character in the file
      */
-    public static Character createFile() {
-        Character student = null;
+    public static Character createFile(Character student) {
         try {
             File newFile = new File(FILE_NAME);
             Scanner keyboard = new Scanner(System.in);
