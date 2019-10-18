@@ -11,8 +11,7 @@ import java.io.*;
  */
 @SuppressWarnings("unchecked")
 public class Database {
-
-    private static ArrayList<Character> files = new ArrayList<Character>();
+    public static ArrayList <Account> files = new ArrayList < Account>();
     public static final String FILE_NAME = "StudentList";
 
     /**
@@ -43,8 +42,8 @@ public class Database {
      *
      * @return The character the user creates or character in the file
      */
-    public static Character createFile() {
-        Character student = null;
+    public static Account createFile() {
+        Account student = null;
         try {
             File newFile = new File(FILE_NAME);
             Scanner keyboard = new Scanner(System.in);
@@ -55,25 +54,13 @@ public class Database {
                 int i = inFile();
                 student = files.get(i);
             } else {
-                System.out.println("Creating a new username.");
-                System.out.println("What do you want your username to be?");
-                input = keyboard.nextLine();
-                inFile();
-
-                // checking to see if the username is taken
-                while (inFile() != -1) {
-                    System.out.println("That username is taken. Choose a new one.");
-                    input = keyboard.nextLine();
-                    inFile();
-                }
-
                 // adding the character to the arraylist
-                student = new Character(input);
+                student = new Account(input);
                 files.add(student);
                 ObjectOutputStream outputStream = new ObjectOutputStream(new FileOutputStream(newFile));
 
                 // writing the arraylist to the file
-                outputStream.writeObject(files);
+                outputStream.writeObject(files.toString());
                 outputStream.close();
             }
 

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<libraryInfos>
+<libraryInfo home="C:\Users\Lilly Tran\Desktop\CS\cs261\java" version="1.8.0_201">
+<bootpath>
+<entry path="C:\Users\Lilly Tran\Desktop\CS\cs261\java\lib\resources.jar"/>
+<entry path="C:\Users\Lilly Tran\Desktop\CS\cs261\java\lib\rt.jar"/>
+<entry path="C:\Users\Lilly Tran\Desktop\CS\cs261\java\lib\sunrsasign.jar"/>
+<entry path="C:\Users\Lilly Tran\Desktop\CS\cs261\java\lib\jsse.jar"/>
+<entry path="C:\Users\Lilly Tran\Desktop\CS\cs261\java\lib\jce.jar"/>
+<entry path="C:\Users\Lilly Tran\Desktop\CS\cs261\java\lib\charsets.jar"/>
+<entry path="C:\Users\Lilly Tran\Desktop\CS\cs261\java\lib\jfr.jar"/>
+<entry path="C:\Users\Lilly Tran\Desktop\CS\cs261\java\classes"/>
+</bootpath>
+<extensionDirs>
+<entry path="C:\Users\Lilly Tran\Desktop\CS\cs261\java\lib\ext"/>
+<entry path="C:\WINDOWS\Sun\Java\lib\ext"/>
+</extensionDirs>
+<endorsedDirs>
+<entry path="C:\Users\Lilly Tran\Desktop\CS\cs261\java\lib\endorsed"/>
+</endorsedDirs>
+</libraryInfo>
+</libraryInfos>
