@@ -1,28 +1,29 @@
-public class Character {
+
+/**
+ * This class creates an account if you are a student or teacher. So far, it is mainly adjusted if you were a student.
+ * Will work on teacher later.
+ */
+ public class Account {
     public static int totalHP;
-    public static String name, characterChoice;
-
-
-    //include standard get/set methods and a constructor.
-    //other methods as needed will be added.
-
+    public static String name, characterChoice, username;
+    com.company.Database d = new com.company.Database();
 
     /**
      * Constructor used when creating a brand-new user, for use in Database
-     * @param player_name (user)name of the player
+     * @param name (user)name of the player
      */
-    public Character(String player_name)
-    {
-        this(0,player_name,"dragon");
+    public Account(String name) {
+        this.name = name;
     }
 
     /**
+     * This is a second constructor for the user to create an account.
      *
      * @param difficulty the desired difficulty of the game (0-2), defaults to 2 if unexpected input
-     * @param player_name (user)name of player
-     * @param character character choice of the player (dragon, cat, bear)
+     * @param name (user)name of player
+     * @param characterChoice character choice of the player (dragon, cat, bear)
      */
-    public Character(int difficulty, String player_name, String character)
+    public Account(int difficulty, String name, String characterChoice)
     {
         if(difficulty == 0)
             totalHP = 150;
@@ -33,32 +34,56 @@ public class Character {
         else
             totalHP = 0;
 
-        name = player_name;
-        characterChoice = character;
+        this.name = name;
+        this.characterChoice = characterChoice;
     }
 
-    public static String getCharacterChoice() {
+    // setter for character
+    public void setCharacterChoice(String characterChoice) {
+        this.characterChoice = characterChoice;
+    }
+
+    // setter for HP points
+    public void setTotalHP(int totalHP) {
+        this.totalHP = totalHP;
+    }
+
+    // setter for name
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    // setter for username
+    public void setUserName(String username) {
+        int counter = 1;
+
+        //checking if the arraylist contains the username
+        if (d.files.contains(username)) {
+            while (d.files.contains(username)) {
+                username = name + counter;
+                counter++;
+            }
+        }
+    }
+
+    // getter for character choice
+    public String getCharacterChoice() {
         return characterChoice;
     }
 
-    public static String getName() {
+    // getter for name
+    public String getName() {
         return name;
     }
 
-    public static int getTotalHP() {
+    // getter for HP points
+    public  int getTotalHP() {
         return totalHP;
     }
 
-    public static void setCharacterChoice(String characterChoice) {
-        Character.characterChoice = characterChoice;
-    }
-
-    public static void setTotalHP(int totalHP) {
-        Character.totalHP = totalHP;
-    }
-
-    public static void setName(String name) {
-        Character.name = name;
+    // getter for username
+    public String getUsername() {
+        return username;
     }
 
     public void takeDamage(int damageTaken)
@@ -66,4 +91,15 @@ public class Character {
         totalHP -= damageTaken;
     }
 
+    /**
+     * This prints out the string to be written in the file.
+     * @return      The format of the student account
+     */
+    @Override
+    public String toString() {
+        return ("Name:" + getName() + "\n" + "Username:" + getUsername() + "\n" + "Character Choice: " +getCharacterChoice() + "\n" + "Total HP: " + getTotalHP());
+    }
+
 }
+
+
