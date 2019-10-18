@@ -4,8 +4,8 @@ public class Tester {
         Main m = new Main();
 
 
-        System.out.println("Char health: " + Character.getTotalHP());
-        System.out.println("Char name: " + Character.getName());
-        System.out.println("Char type: " + Character.getCharacterChoice());
+        System.out.println("Char health: " + Account.getTotalHP());
+        System.out.println("Char name: " + Account.getName());
+        System.out.println("Char type: " + Account.getCharacterChoice());
     }
 }

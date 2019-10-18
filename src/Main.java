@@ -3,7 +3,7 @@ import java.util.Scanner;
 public class Main {
     //main class that runs the program.
     MathGenerator m;
-    Character c;
+    Account c;
     Database db;
     Scanner scan;
     Enemy e;
@@ -32,12 +32,15 @@ public class Main {
         String chara = scan.nextLine();
 
 
-        c = new Character(diff, name, chara);
-        //db.createFile();
+        c = new Account(diff, name, chara);
+        try {
+            db.writeFile(c);
+        }
+        catch (Exception e) {}
+
         e = new Enemy(50, "GhostOne",diff);
 
         attackEnemy(e.questionList);
-
 
     }
 
