@@ -1,22 +1,23 @@
-package com.company;
 
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.io.*;
 
 /**
- * This class creates the database of the whole game, storing all the characters into a file. It will search the file
- * if the username exists. If it does, it will load that character. If it does not, it will write a new file with the
+ * This class creates the database of the whole game, storing all the characters
+ * into a file. It will search the file if the username exists. If it does, it
+ * will load that character. If it does not, it will write a new file with the
  * previous characters.
  */
+
 @SuppressWarnings("unchecked")
 public class Database {
-    public static ArrayList <Account> files = new ArrayList < Account>();
+    public static ArrayList<Account> files = new ArrayList<Account>();
     public static final String FILE_NAME = "StudentList";
 
     /**
-     * This method will return either the index in the ArrayList if the character is in the file or it will return -1 if
-     * the character is not found.
+     * This method will return either the index in the ArrayList if the character is
+     * in the file or it will return -1 if the character is not found.
      *
      * @return Index in the ArrayList or -1 if not found
      */
@@ -37,8 +38,9 @@ public class Database {
     }
 
     /**
-     * This method creates a new file, overwriting the old one with the past and previous information
-     * if the character is not found in the ArrayList. If the character found, it will return the character.
+     * This method creates a new file, overwriting the old one with the past and
+     * previous information if the character is not found in the ArrayList. If the
+     * character found, it will return the character.
      *
      * @return The character the user creates or character in the file
      */
@@ -47,10 +49,16 @@ public class Database {
         try {
             File newFile = new File(FILE_NAME);
             Scanner keyboard = new Scanner(System.in);
+            Scanner scan = new Scanner(newFile);
             String input = " ";
 
+            // scanning the file and adding the names in
+            while (scan.hasNext() == true) {
+                files.add(new Account(scan.nextLine()));
+            }
+
+
             if (!(inFile() == (-1))) {
-                Scanner scan = new Scanner(newFile);
                 int i = inFile();
                 student = files.get(i);
             } else {
