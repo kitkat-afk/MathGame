@@ -3,15 +3,15 @@
  * Will work on teacher later.
  */
 public class Account {
-    public static int totalHP;
-    public static String name, characterChoice, username;
-    Database d = new Database();
+    public static int totalHP, ansCorrect, ansAttempt; //records attempted answers and total answers
+    public static String name, characterChoice, username, password; //name, username, password,
+    public Account(String name) {what character they're using
+        Database d = new Database(); //database call
 
-    /**
-     * Constructor used when creating a brand-new user, for use in Database
-     * @param name (user)name of the player
-     */
-    public Account(String name) {
+        /**
+         * Constructor used when creating a brand-new user, for use in Database
+         * @param name (user)name of the player
+         */
         this.name = name;
     }
 

@@ -3,7 +3,6 @@ public class Tester {
     {
         Main m = new Main();
 
-
         System.out.println("Char health: " + Account.getTotalHP());
         System.out.println("Char name: " + Account.getName());
         System.out.println("Char type: " + Account.getCharacterChoice());

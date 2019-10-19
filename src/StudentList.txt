@@ -1,10 +1,10 @@
 username
 password
 test name
-0
-cat
-9
-20
+0 //difficulty setting
+cat //character selection
+9 //ans correct
+20 //ans attempt
 
 username2
 password2

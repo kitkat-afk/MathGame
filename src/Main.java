@@ -33,10 +33,6 @@ public class Main {
 
 
         c = new Account(diff, name, chara);
-        try {
-            db.writeFile(c);
-        }
-        catch (Exception e) {}
 
         e = new Enemy(50, "GhostOne",diff);
 
