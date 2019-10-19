@@ -1,4 +1,3 @@
-
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.io.*;
@@ -21,14 +20,11 @@ public class Database {
 	 *
 	 * @return Index in the ArrayList or -1 if not found
 	 */
-	public static int inFile() {
-		Scanner keyboard = new Scanner(System.in);
-		System.out.println("What is your username?");
-		String input = keyboard.nextLine();
+	public static int inFile(String playerUsername) {
 
 		for (int i = 0; i < files.size(); i++) {
 			// Checking if the username is in the system
-			if (files.get(i).username.equals(input) == true) {
+			if (files.get(i).username.equals(playerUsername) == true) {
 				return i;
 			} else {
 				System.out.println("Oops, your username is not in the system");
@@ -44,20 +40,24 @@ public class Database {
 	 *
 	 * @return The character the user creates or character in the file
 	 */
-	public static Account createFile() {
+	public static Account createFile(String playerUsername) {
 		Account student = null;
 		try {
 			File newFile = new File(FILE_NAME);
-			Scanner keyboard = new Scanner(System.in);
-			String input = " ";
+			Scanner scan = new Scanner(newFile);
 
-			if (!(inFile() == (-1))) {
-				Scanner scan = new Scanner(newFile);
-				int i = inFile();
+			// scanning the file and adding the names in
+			while (scan.hasNext() == true) {
+				files.add(new Account(scan.nextLine()));
+			}
+
+
+			if (!(inFile(playerUsername) == (-1))) {
+				int i = inFile(playerUsername);
 				student = files.get(i);
 			} else {
 				// adding the character to the arraylist
-				student = new Account(input);
+				student = new Account(playerUsername);
 				files.add(student);
 				ObjectOutputStream outputStream = new ObjectOutputStream(new FileOutputStream(newFile));
 
