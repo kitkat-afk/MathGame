@@ -1,11 +1,14 @@
 /**
  * This class creates an account if you are a student or teacher. So far, it is mainly adjusted if you were a student.
  * Will work on teacher later.
+ *
+ * THIS CLASS HAS BEEN DEPRECIATED. PLEASE USE Account_a INSTEAD.
  */
 public class Account {
     public static int totalHP, ansCorrect, ansAttempt; //records attempted answers and total answers
     public static String name, characterChoice, username, password; //name, username, password,
-    public Account(String name) {what character they're using
+
+    public Account(String name) //what character they're using
         Database d = new Database(); //database call
 
         /**
