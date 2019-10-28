@@ -8,7 +8,7 @@ public class Account {
     public static int totalHP, ansCorrect, ansAttempt; //records attempted answers and total answers
     public static String name, characterChoice, username, password; //name, username, password,
 
-    public Account(String name) //what character they're using
+    public Account(String name){ //what character they're using
         Database d = new Database(); //database call
 
         /**
@@ -60,12 +60,12 @@ public class Account {
         int counter = 1;
 
         //checking if the arraylist contains the username
-        if (d.files.contains(username)) {
-            while (d.files.contains(username)) {
-                username = name + counter;
-                counter++;
-            }
-        }
+        //if (d.files.contains(username)) {
+          //  while (d.files.contains(username)) {
+            //    username = name + counter;
+              //  counter++;
+            //}
+        //}
     }
 
     // getter for character choice
