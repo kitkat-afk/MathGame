@@ -39,7 +39,7 @@ public class GUI extends JFrame {
     /**
      * Create the frame.
      */
-    public GUIMathGame() {
+    public GUI() {
         setForeground(new Color(255, 255, 240));
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(100, 100, 800, 500);
