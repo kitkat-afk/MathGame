@@ -4,7 +4,7 @@ public class Main {
     //main class that runs the program.
     MathGenerator m;
     Account c;
-    Database db;
+   // Database db;
     Scanner scan;
     Enemy e;
 
@@ -15,7 +15,7 @@ public class Main {
     public Main()
     {
         m = new MathGenerator();
-        db = new Database();
+       // db = new Database();
         scan = new Scanner(System.in);
 
         System.out.println("Welcome to Math Game v. 0.1!");
@@ -71,6 +71,12 @@ public class Main {
     public void enemyAttack()
     {
 
+    }
+
+
+    public static void switchToGame() {
+        Game newGame = new Game();
+        newGame.setVisible(true);
     }
 
 }

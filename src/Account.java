@@ -9,7 +9,7 @@ public class Account {
     public static String name, characterChoice, username, password; //name, username, password,
 
     public Account(String name){ //what character they're using
-        Database d = new Database(); //database call
+        //Database d = new Database(); //database call
 
         /**
          * Constructor used when creating a brand-new user, for use in Database
