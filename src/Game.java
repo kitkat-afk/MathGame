@@ -1,11 +1,14 @@
+import java.awt.*;
+
 public class Game extends Canvas implements Runnable{
-    public static final int WIDTH = 640, HEIGHT = WIDTH / 12 * 9;
+    public static final int WIDTH = 609, HEIGHT = 452;
 
     private Thread thread;
     private boolean running = false;
 
     public Game(){
-        new Window(WIDTH,HEIGHT,"test",this);
+        Window win = new Window(WIDTH, HEIGHT,"NumberQuest", this);
+        win.mainPage(WIDTH, HEIGHT, this);
     }
 
     public synchronized void start()
