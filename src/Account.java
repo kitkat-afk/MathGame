@@ -1,18 +1,20 @@
-
 /**
  * This class creates an account if you are a student or teacher. So far, it is mainly adjusted if you were a student.
  * Will work on teacher later.
+ *
+ * THIS CLASS HAS BEEN DEPRECIATED. PLEASE USE Account_a INSTEAD.
  */
- public class Account {
-    public static int totalHP;
-    public static String name, characterChoice, username;
-    com.company.Database d = new com.company.Database();
+public class Account {
+    public static int totalHP, ansCorrect, ansAttempt; //records attempted answers and total answers
+    public static String name, characterChoice, username, password; //name, username, password,
 
-    /**
-     * Constructor used when creating a brand-new user, for use in Database
-     * @param name (user)name of the player
-     */
-    public Account(String name) {
+    public Account(String name){ //what character they're using
+        Database d = new Database(); //database call
+
+        /**
+         * Constructor used when creating a brand-new user, for use in Database
+         * @param name (user)name of the player
+         */
         this.name = name;
     }
 
@@ -58,35 +60,35 @@
         int counter = 1;
 
         //checking if the arraylist contains the username
-        if (d.files.contains(username)) {
-            while (d.files.contains(username)) {
-                username = name + counter;
-                counter++;
-            }
-        }
+        //if (d.files.contains(username)) {
+          //  while (d.files.contains(username)) {
+            //    username = name + counter;
+              //  counter++;
+            //}
+        //}
     }
 
     // getter for character choice
-    public String getCharacterChoice() {
+    public static String getCharacterChoice() {
         return characterChoice;
     }
 
     // getter for name
-    public String getName() {
+    public static String getName() {
         return name;
     }
 
     // getter for HP points
-    public  int getTotalHP() {
+    public static int getTotalHP() {
         return totalHP;
     }
 
     // getter for username
-    public String getUsername() {
+    public static String getUsername() {
         return username;
     }
 
-    public void takeDamage(int damageTaken)
+    public static void takeDamage(int damageTaken)
     {
         totalHP -= damageTaken;
     }
