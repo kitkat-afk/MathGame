@@ -1,5 +1,2 @@
 *.class
 *.log
-out/
-images/
-.idea/
