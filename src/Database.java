@@ -15,6 +15,7 @@ public class Database {
     private Connection connect() {
         // db parameters
         String url = "jdbc:sqlite:db.sqlite";
+
         Connection con = null;
 
         try {
