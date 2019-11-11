@@ -12,10 +12,9 @@ public class Student extends Account_a {
 
     //Note that difficulty is not saved by this class: this will be handled dynamically within the game itself.
 
-    public Student(String n, String u, String p, String ch)
+    public Student(String n, String u, String p)
     {
         super(n,u,p);
-        character_type = ch;
         ansCorrect = 0;
         ansAttempt = 0;
         HP = 100;
