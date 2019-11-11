@@ -74,9 +74,4 @@ public class Main {
     }
 
 
-    public static void switchToGame() {
-        Game newGame = new Game();
-        newGame.setVisible(true);
-    }
-
 }

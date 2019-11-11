@@ -1,24 +1,19 @@
-import java.awt.BorderLayout;
-import java.awt.EventQueue;
 
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
-import javax.swing.JLabel;
+import java.awt.EventQueue;
 import java.awt.Font;
-import javax.swing.JButton;
-import java.awt.Color;
-import com.jgoodies.forms.factories.DefaultComponentFactory;
-import java.awt.Canvas;
+import javax.swing.*;
 import javax.swing.border.MatteBorder;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
+import java.awt.Color;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import javax.swing.border.LineBorder;
 
 public class GUI extends JFrame {
-
-    private JPanel contentPane;
+    private static final long serialVersionUID =  890643356112344L;
+    MathGenerator equation = new MathGenerator();
+    private int counter = 0;
 
     /**
      * Launch the application.
@@ -28,7 +23,9 @@ public class GUI extends JFrame {
             public void run() {
                 try {
                     GUI frame = new GUI();
+                    frame.loginGUI();
                     frame.setVisible(true);
+                    System.out.println(frame.equation.generateEquation(50, 10)[0].toString());
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -39,64 +36,156 @@ public class GUI extends JFrame {
     /**
      * Create the frame.
      */
-    public GUI() {
-        setForeground(new Color(255, 255, 240));
+    public void loginGUI() {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(100, 100, 800, 500);
-        contentPane = new JPanel();
-        contentPane.setBackground(new Color(221, 160, 221));
-        contentPane.setBorder(new MatteBorder(25, 25, 25, 25, (Color) new Color(255, 240, 245)));
+        JPanel contentPane = new JPanel();
+        contentPane.setBackground(new Color(147, 112, 219));
+        contentPane.setForeground(new Color(240, 248, 255));
+        contentPane.setBorder(new MatteBorder(50, 50, 50, 50, (Color) new Color(255, 228, 225)));
         setContentPane(contentPane);
         contentPane.setLayout(null);
 
-        JLabel Title = new JLabel("Welcome to Number Quest!");
-        Title.setFont(new Font("Segoe UI Black", Font.BOLD, 35));
-        Title.setBounds(114, 33, 566, 75);
-        contentPane.add(Title);
+        JLabel lblWelcomeToNumber = new JLabel("Welcome to Number Quest!");
+        lblWelcomeToNumber.setFont(new Font("Segoe UI Black", Font.BOLD, 35));
+        lblWelcomeToNumber.setBounds(70, 57, 576, 85);
+        contentPane.add(lblWelcomeToNumber);
 
         JButton btnNew = new JButton("NEW");
-        btnNew.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent arg0) {
-            }
-        });
         btnNew.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent arg0) {
-
+                jumpToNewScreen();
             }
         });
-        btnNew.setForeground(new Color(123, 104, 238));
-        btnNew.setBackground(new Color(255, 255, 240));
-        btnNew.setBounds(328, 184, 115, 29);
+        btnNew.setBackground(new Color(245, 245, 220));
+        btnNew.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+            }
+        });
+        btnNew.setBounds(329, 206, 115, 29);
         contentPane.add(btnNew);
 
         JButton btnLoad = new JButton("LOAD");
-        btnLoad.setForeground(new Color(165, 42, 42));
-        btnLoad.setBackground(new Color(255, 255, 240));
-        btnLoad.setBounds(328, 256, 115, 29);
+        btnLoad.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent arg0) {
+                jumpToLoadScreen();
+            }
+        });
+        btnLoad.setBackground(new Color(245, 245, 220));
+        btnLoad.setBounds(329, 273, 115, 29);
+        btnLoad.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+            }
+        });
         contentPane.add(btnLoad);
 
-        JButton btnQuit = new JButton("QUIT");
-        btnQuit.setBackground(new Color(255, 255, 240));
-        btnQuit.setForeground(Color.BLACK);
-        btnQuit.setBounds(328, 318, 115, 29);
+        JButton btnQuit  = new JButton("QUIT");
+        btnQuit.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent arg0) {
+                System.exit(1);;
+            }
+        });
+        btnQuit.setBackground(new Color(245, 245, 220));
+        btnQuit.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+            }
+        });
+        btnQuit.setBounds(329, 344, 115, 29);
         contentPane.add(btnQuit);
 
-        JButton btnStudentProfiles = new JButton("STUDENT PROFILES");
-        btnStudentProfiles.setForeground(new Color(176, 196, 222));
-        btnStudentProfiles.setBackground(new Color(255, 255, 240));
-        btnStudentProfiles.setBounds(545, 386, 203, 29);
+        JButton btnStudentProfiles = new JButton("Student Profiles");
+        btnStudentProfiles.setBackground(new Color(245, 245, 245));
+        btnStudentProfiles.setBounds(551, 344, 158, 29);
         contentPane.add(btnStudentProfiles);
-
-        JLabel label = DefaultComponentFactory.getInstance().createLabel("");
-        label.setBounds(83, 301, 138, 20);
-        contentPane.add(label);
     }
 
-    private void jump2Game(JLabel label) {
-        contentPane.setVisible(false);
+    public void newSelection() {
+        JPanel contentPane;
+        JTextField textField;
+        JLabel lblEnterYourLast;
+        JTextField textField_1;
+
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setBounds(100, 100, 800, 500);
+        contentPane = new JPanel();
+        contentPane.setBackground(new Color(102, 153, 204));
+        contentPane.setBorder(new LineBorder(new Color(102, 204, 204), 50, true));
+        setContentPane(contentPane);
+        contentPane.setLayout(null);
+
+        JLabel lblEnterYourFirst = new JLabel("Enter your first name:");
+        lblEnterYourFirst.setFont(new Font("Segoe UI Black", Font.BOLD, 25));
+        lblEnterYourFirst.setBounds(78, 51, 325, 34);
+        contentPane.add(lblEnterYourFirst);
+
+        textField = new JTextField();
+        textField.setBounds(77, 114, 286, 59);
+        contentPane.add(textField);
+        textField.setColumns(10);
+
+        lblEnterYourLast = new JLabel("Enter a password:");
+        lblEnterYourLast.setFont(new Font("Segoe UI Black", Font.BOLD, 25));
+        lblEnterYourLast.setBounds(78, 189, 286, 50);
+        contentPane.add(lblEnterYourLast);
+
+        textField_1 = new JTextField();
+        textField_1.setBounds(78, 255, 285, 59);
+        contentPane.add(textField_1);
+        textField_1.setColumns(10);
+
+        JButton btnSubmit = new JButton("Submit");
+        btnSubmit.setFont(new Font("Tahoma", Font.PLAIN, 16));
+        btnSubmit.setBounds(568, 361, 134, 44);
+        contentPane.add(btnSubmit);
+    }
+
+
+    private void jumpToNewScreen() {
+        setVisible(false);
         dispose();
-        String welcome = "Pick a character, " + Account.name;
-        Main.switchToGame();
+        newSelection();
+        setVisible(true);
     }
+
+    public void loadSelection() {
+
+        for (int i = 0; i < 10; i++) {
+            JPanel contentPane;
+            JTextField textField;
+
+            setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            setBounds(100, 100, 800, 500);
+            contentPane = new JPanel();
+            contentPane.setBackground(new Color(255, 255, 204));
+            contentPane.setBorder(new LineBorder(new Color(255, 255, 102), 50, true));
+            setContentPane(contentPane);
+            contentPane.setLayout(null);
+
+
+            JLabel lblProblem = new JLabel(equation.generateEquation(50, 10)[0].toString());
+            lblProblem.setFont(new Font("Segoe UI Black", Font.BOLD, 25));
+            lblProblem.setBounds(62, 168, 420, 48);
+            contentPane.add(lblProblem);
+
+            JButton btnSubmit = new JButton("Submit");
+            btnSubmit.setBounds(603, 354, 115, 29);
+            contentPane.add(btnSubmit);
+
+            textField = new JTextField();
+            textField.setBounds(593, 168, 125, 52);
+            contentPane.add(textField);
+            textField.setColumns(10);
+        }
+    }
+
+    private void jumpToLoadScreen() {
+        setVisible(false);
+        dispose();
+        loadSelection();
+        setVisible(true);
+    }
+
 }

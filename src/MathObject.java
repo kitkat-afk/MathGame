@@ -43,6 +43,6 @@ public class MathObject {
     @Override
     public String toString()
     {
-        return(one + " " + getOp() + " " + two + " = " + sum);
+        return(one + " " + getOp() + " " + two + " = " );
     }
 }
