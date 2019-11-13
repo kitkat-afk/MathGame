@@ -43,6 +43,11 @@ public class MathObject {
     @Override
     public String toString()
     {
-        return(one + " " + getOp() + " " + two + " = " );
+        return(one + " " + getOp() + " " + two + " = " + sum);
     }
+
+    public String askQuestion() {
+        return (one + " " + getOp() + " " + two + " = ");
+    }
+
 }
