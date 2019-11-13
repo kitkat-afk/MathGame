@@ -11,11 +11,10 @@ import java.awt.event.MouseEvent;
 import javax.swing.border.LineBorder;
 
 public class GUI extends JFrame {
-    private static final long serialVersionUID =  890643356112344L;
+    private static final long serialVersionUID = 890643356112344L;
     MathGenerator equation = new MathGenerator();
     private int counter = 0;
-    private Main main;
-    private int numberQuestions = 0;
+    private int numberQuestions = 10;
     private int numberCorrect = 0;
 
     /**
@@ -83,11 +82,12 @@ public class GUI extends JFrame {
         });
         contentPane.add(btnLoad);
 
-        JButton btnQuit  = new JButton("QUIT");
+        JButton btnQuit = new JButton("QUIT");
         btnQuit.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent arg0) {
-                System.exit(1);;
+                System.exit(1);
+                ;
             }
         });
         btnQuit.setBackground(new Color(245, 245, 220));
@@ -139,8 +139,9 @@ public class GUI extends JFrame {
         textField_1.setColumns(10);
 
         JButton btnSubmit = new JButton("Submit");
-        btnSubmit.setFont(new Font("Tahoma", Font.PLAIN, 16));
-        btnSubmit.setBounds(568, 361, 134, 44);
+        btnSubmit.setBounds(551, 358, 170, 29);
+        btnSubmit.setFont(new Font("Segoe UI Black", Font.PLAIN, 25));
+        btnSubmit.setBounds(603, 354, 115, 29);
         contentPane.add(btnSubmit);
     }
 
@@ -156,53 +157,87 @@ public class GUI extends JFrame {
         final JPanel contentPane = new JPanel();
         final JTextField textField = new JTextField();
         final int i = 0;
-            setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-            setBounds(100, 100, 800, 500);
-            //contentPane = new JPanel();
-            contentPane.setBackground(new Color(255, 255, 204));
-            contentPane.setBorder(new LineBorder(new Color(255, 255, 102), 50, true));
-            setContentPane(contentPane);
-            contentPane.setLayout(null);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setBounds(100, 100, 800, 500);
+        contentPane.setBackground(new Color(255, 255, 204));
+        contentPane.setBorder(new LineBorder(new Color(255, 255, 102), 50, true));
+        setContentPane(contentPane);
+        contentPane.setLayout(null);
 
-            JLabel lblProblem = new JLabel("What is " + equation.generateEquation(50, 10)[0].askQuestion() + " ?");
-            lblProblem.setFont(new Font("Segoe UI Black", Font.BOLD, 40));
-            lblProblem.setBounds(65, 184, 443, 48);
-            contentPane.add(lblProblem);
+        JLabel lblProblem = new JLabel("What is " + equation.generateEquation(50, 10)[0].askQuestion() + " ?");
+        lblProblem.setFont(new Font("Segoe UI Black", Font.BOLD, 40));
+        lblProblem.setBounds(65, 184, 443, 48);
+        contentPane.add(lblProblem);
 
-            //textField = new JTextField();
-            textField.setBounds(523, 180, 125, 52);
-            contentPane.add(textField);
-            textField.setColumns(10);
+        textField.setBounds(523, 180, 125, 52);
+        contentPane.add(textField);
+        textField.setColumns(10);
 
-            JButton btnSubmit = new JButton("Submit");
+        final JProgressBar progressBar = new JProgressBar(0, numberQuestions);
+        progressBar.setBounds(270, 54, 238, 48);
+        contentPane.add(progressBar);
 
-            JProgressBar progressBar = new JProgressBar();
-            progressBar.setBounds(270, 54, 238, 48);
-            contentPane.add(progressBar);
-
-
-            btnSubmit.addMouseListener(new MouseAdapter() {
-                @Override
-                public void mouseClicked(MouseEvent arg0) {
-                    if (equation.questionList[i].getSum() == Integer.parseInt(textField.getText())) {
-                        JOptionPane.showMessageDialog(contentPane, "Right answer");
-
-                    } else {
-                        JOptionPane.showMessageDialog(contentPane, "Wrong answer");
-                    }
+        JButton btnSubmit = new JButton("Submit");
+        btnSubmit.setBounds(551, 358, 170, 29);
+        btnSubmit.setFont(new Font("Segoe UI Black", Font.PLAIN, 25));
+        btnSubmit.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent arg0) {
+                if (equation.questionList[i].getSum() == Integer.parseInt(textField.getText())) {
+                    JOptionPane.showMessageDialog(contentPane, "Right answer!");
+                    numberCorrect++;
+                } else {
+                    JOptionPane.showMessageDialog(contentPane, "Wrong answer! The right answer was " + equation.questionList[i].getSum());
                 }
-            });
-            btnSubmit.setBounds(603, 354, 115, 29);
-            contentPane.add(btnSubmit);
-        }
+                counter++;
+                if (counter == numberQuestions) {
+                    jumpToEndScreen();
+                } else {
+                    jumpToLoadScreen();
+                    loadSelection();
+                }
+            }
+        });
+        btnSubmit.setBounds(551, 358, 170, 29);
+        contentPane.add(btnSubmit);
+
+    }
 
 
     private void jumpToLoadScreen() {
-            setVisible(false);
-            dispose();
-            loadSelection();
-            setVisible(true);
-        }
+        setVisible(false);
+        dispose();
+        loadSelection();
+        setVisible(true);
+    }
+
+
+    private void endScreen() {
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setBounds(100, 100, 800, 500);
+        JPanel contentPane = new JPanel();
+        contentPane.setBackground(new Color(0, 204, 153));
+        contentPane.setBorder(new MatteBorder(50, 50, 50, 50, (Color) new Color(153, 255, 204)));
+        setContentPane(contentPane);
+        contentPane.setLayout(null);
+
+        JLabel lblGameOver = new JLabel("GAME OVER! ");
+        lblGameOver.setFont(new Font("Segoe UI Black", Font.BOLD, 50));
+        lblGameOver.setBounds(216, 50, 379, 125);
+        contentPane.add(lblGameOver);
+
+        JLabel lblYouGotOut = new JLabel("You got " + numberCorrect + " out of " + numberQuestions + " correct!");
+        lblYouGotOut.setFont(new Font("Segoe UI Black", Font.BOLD, 30));
+        lblYouGotOut.setBounds(160, 225, 480, 58);
+        contentPane.add(lblYouGotOut);
+    }
+
+    private void jumpToEndScreen() {
+        setVisible(false);
+        dispose();
+        endScreen();
+        setVisible(true);
+    }
 
     private void showProgress() {
 
