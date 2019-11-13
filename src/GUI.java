@@ -60,10 +60,6 @@ public class GUI extends JFrame {
             }
         });
         btnNew.setBackground(new Color(245, 245, 220));
-        btnNew.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-            }
-        });
         btnNew.setBounds(329, 206, 115, 29);
         contentPane.add(btnNew);
 
@@ -76,10 +72,6 @@ public class GUI extends JFrame {
         });
         btnLoad.setBackground(new Color(245, 245, 220));
         btnLoad.setBounds(329, 273, 115, 29);
-        btnLoad.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-            }
-        });
         contentPane.add(btnLoad);
 
         JButton btnQuit = new JButton("QUIT");
@@ -91,10 +83,6 @@ public class GUI extends JFrame {
             }
         });
         btnQuit.setBackground(new Color(245, 245, 220));
-        btnQuit.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-            }
-        });
         btnQuit.setBounds(329, 344, 115, 29);
         contentPane.add(btnQuit);
 
@@ -139,10 +127,23 @@ public class GUI extends JFrame {
         textField_1.setColumns(10);
 
         JButton btnSubmit = new JButton("Submit");
-        btnSubmit.setBounds(551, 358, 170, 29);
-        btnSubmit.setFont(new Font("Segoe UI Black", Font.PLAIN, 25));
-        btnSubmit.setBounds(603, 354, 115, 29);
+        btnSubmit.setFont(new Font("Segoe UI Black", Font.BOLD, 20));
+        btnSubmit.setBounds(629, 391, 134, 44);
         contentPane.add(btnSubmit);
+
+        JButton btnBack = new JButton("Back");
+        btnBack.setFont(new Font("Segoe UI Black", Font.BOLD, 16));
+        btnBack.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent arg0) {
+                setVisible(false);
+                dispose();
+                loginGUI();
+                setVisible(true);
+            }
+        });
+        btnBack.setBounds(15, 399, 115, 29);
+        contentPane.add(btnBack);
     }
 
 
@@ -173,9 +174,11 @@ public class GUI extends JFrame {
         contentPane.add(textField);
         textField.setColumns(10);
 
-        final JProgressBar progressBar = new JProgressBar(0, numberQuestions);
-        progressBar.setBounds(270, 54, 238, 48);
-        contentPane.add(progressBar);
+//        final JProgressBar progressBar = new JProgressBar();
+//        progressBar.setBounds(270, 71, 238, 48);
+//        progressBar.setMinimum(0);
+//        progressBar.setMaximum(10);
+//        contentPane.add(progressBar);
 
         JButton btnSubmit = new JButton("Submit");
         btnSubmit.setBounds(551, 358, 170, 29);
@@ -190,6 +193,7 @@ public class GUI extends JFrame {
                     JOptionPane.showMessageDialog(contentPane, "Wrong answer! The right answer was " + equation.questionList[i].getSum());
                 }
                 counter++;
+                //progressBar.setValue(numberCorrect);
                 if (counter == numberQuestions) {
                     jumpToEndScreen();
                 } else {
@@ -200,7 +204,6 @@ public class GUI extends JFrame {
         });
         btnSubmit.setBounds(551, 358, 170, 29);
         contentPane.add(btnSubmit);
-
     }
 
 
@@ -242,6 +245,5 @@ public class GUI extends JFrame {
     private void showProgress() {
 
     }
-
 
 }
