@@ -3,7 +3,7 @@ import java.util.Scanner;
 public class Main {
     //main class that runs the program.
     MathGenerator m;
-    Account c;
+   // Account c;
    // Database db;
     Scanner scan;
     Enemy e;
@@ -32,46 +32,38 @@ public class Main {
         String chara = scan.nextLine();
 
 
-        c = new Account(diff, name, chara);
+        //c = new Account(diff, name, chara);
 
         e = new Enemy(50, "GhostOne",diff);
 
-        attackEnemy(e.questionList);
+        questionsAsked(e.questionList);
 
     }
 
-    public void attackEnemy(MathObject[] questions)
-    {
+    public void questionsAsked(MathObject[] questions) {
         int response = 0;
 
-        for(int i = 0; i < questions.length; i++)
-        {
-            System.out.println("What is " + questions[i].getOne() + " " + questions[i].getOp() + " " + questions[i].getTwo() + " ?");
+        for (int i = 0; i < questions.length; i++) {
+            System.out.println( "What is " + questions[i].getOne() + " " + questions[i].getOp() + " " + questions[i].getTwo() + " ?");
             response = scan.nextInt();
-
-
-            if(response == questions[i].getSum()) {
-                System.out.println("Correct.");
-                continue;
-            }
-            else
-            {
-                System.out.println("Incorrect. The correct answer was: " + questions[i].getSum());
-                questions[i].setAnswerCorrect(false);
-                c.takeDamage(25);
-
-                if(c.getTotalHP() <= 0 ) {
-                    System.out.println("Game Over.");
-                    break;
-                }
-            }
+            checkAnswer(response, questions, i);
         }
     }
 
-    public void enemyAttack()
-    {
+
+        public boolean checkAnswer(int response, MathObject[] questions, int i) {
+            if(response == questions[i].getSum()) {
+               return questions[i].isAnswerCorrect();
+            }
+            else  {
+               //  System.out.println("Incorrect. The correct answer was: " + questions[i].getSum());
+                questions[i].setAnswerCorrect(false);
+                return questions[i].isAnswerCorrect();
+                }
+            }
+
 
     }
 
 
-}
+
