@@ -4,7 +4,7 @@ import java.sql.*;
  * Database class for interfacing with an SQLite database file.
  *
  * @author Benjamin Williams
- * @version 11.02.19
+ * @version 11.21.19
  */
 
 public class Database {
@@ -29,17 +29,17 @@ public class Database {
 
     }
 
-    public Student login(String username, String password) {
-        String sql = ("SELECT * FROM Students WHERE username = ? AND password = ?;");
+    public Student login(String name, String password) {
+        String sql = ("SELECT * FROM Students WHERE name = ? AND password = ?;");
 
         try (Connection con = this.connect(); PreparedStatement pstmt = con.prepareStatement(sql)) {
-            pstmt.setString(1,username);
+            pstmt.setString(1,name);
             pstmt.setString(2,password);
 
             ResultSet rs = pstmt.executeQuery();
 
             while (rs.next()) {
-                Student result = new Student(rs.getString("name"), rs.getString("username"), rs.getString("password"));
+                Student result = new Student(rs.getString("name"), rs.getString("password"));
                 result.setAnsAttempt(rs.getInt("attempt"));
                 result.setAnsCorrect(rs.getInt("correct"));
                 return result;
@@ -52,9 +52,9 @@ public class Database {
         return null;
     }
 
-    public void newUser(String name, String user, String pass) {
-        String sql = ("INSERT INTO Students(name, username, password, correct, attempt) VALUES(\'"
-                + name + "\', \'" + user + "\', \'" + pass + "\', 0, 0);");
+    public void newUser(String name, String pass) {
+        String sql = ("INSERT INTO Students(name, password, correct, attempt) VALUES(\'"
+                + name + "\',\'" + pass + "\', 0, 0);");
 
         System.out.println(sql);
 
@@ -82,7 +82,6 @@ public class Database {
             while(rs.next()) {
                 System.out.println(rs.getInt("ID") + "\t" +
                         rs.getString("name")  + "\t" +
-                        rs.getString("username") + "\t" +
                         rs.getString("password") + "\t" +
                         rs.getInt("correct") + "\t" +
                         rs.getInt("attempt"));
@@ -94,9 +93,9 @@ public class Database {
         }
     }
 
-    public void deleteStudent(String user)
+    public void deleteStudent(String name)
     {
-        String sql = ("DELETE FROM Students WHERE username = \'" +  user + "\';");
+        String sql = ("DELETE FROM Students WHERE name = \'" +  name + "\';");
         System.out.println(sql);
 
         Connection c = this.connect();
@@ -117,8 +116,6 @@ public class Database {
 
     public static void main(String[] args) {
         Database db = new Database();
-        db.printAllStudents();
-        db.login("jdoe","me");
         db.printAllStudents();
     }
 

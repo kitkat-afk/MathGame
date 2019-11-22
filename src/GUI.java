@@ -169,7 +169,7 @@ public class GUI extends JFrame {
         contentPane.setLayout(null);
 
         // prompts the user to enter their first name in the text box
-        JLabel lblEnterYourFirst = new JLabel("Enter your first name:");
+        JLabel lblEnterYourFirst = new JLabel("Enter your name:");
         lblEnterYourFirst.setFont(new Font("Segoe UI Black", Font.BOLD, 25));
         lblEnterYourFirst.setBounds(67, 96, 325, 34);
         contentPane.add(lblEnterYourFirst);
@@ -182,7 +182,11 @@ public class GUI extends JFrame {
         textField.setColumns(10);
 
         // prompts the user to enter their password in the text box
+<<<<<<< HEAD
         JLabel lblEnterYourLast = new JLabel("Create your password:");
+=======
+        lblEnterYourLast = new JLabel("Enter your password:");
+>>>>>>> upstream/master
         lblEnterYourLast.setFont(new Font("Segoe UI Black", Font.BOLD, 25));
         lblEnterYourLast.setBounds(67, 244, 325, 50);
         contentPane.add(lblEnterYourLast);
@@ -199,6 +203,16 @@ public class GUI extends JFrame {
         btnSubmit.setFont(new Font("Segoe UI Black", Font.BOLD, 20));
         btnSubmit.setBounds(617, 377, 134, 44);
         contentPane.add(btnSubmit);
+        btnSubmit.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                String username = textField.getText();
+                String password = textField_1.getText();
+
+                Database d = new Database();
+                d.newUser(username, password);
+            }
+        });
 
         // a back button that will go to the previous screen (which is the loginGUI - the one with New, Load, Quit page) method
         JButton btnNewButton = new JButton("Back");
