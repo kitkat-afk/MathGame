@@ -7,9 +7,9 @@
 
 public class Teacher extends Account_a {
 
-    public Teacher(String n, String u, String p)
+    public Teacher(String n, String p)
     {
-        super(n,u,p);
+        super(n,p);
     }
 
     /**
