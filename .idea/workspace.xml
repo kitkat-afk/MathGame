@@ -2,20 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cdea6ff5-4889-4d17-b2ff-3765542ad392" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/sqlite_jdbc_3_27_2_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/db.sqlite" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MathGame.iml" beforeDir="false" afterPath="$PROJECT_DIR$/MathGame.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/MathGame/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MathGame/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/MathGame/.idea/src.iml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MathGame/.idea/src.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/MathGame/GUIMathGame$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/MathGame/GUIMathGame.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/MathGame/Game.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/MathGame/META-INF/MathGame.kotlin_module" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/MathGame/Window.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/MathGame/db.sqlite" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MathGame/db.sqlite" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db.sqlite" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Database.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Database.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/db.sqlite" beforeDir="false" afterPath="$PROJECT_DIR$/src/db.sqlite" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -99,8 +88,8 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.Database" />
-        <item itemvalue="JAR Application.sqlite-jdbc-3.27.2.1.jar" />
         <item itemvalue="Application.GUI" />
+        <item itemvalue="JAR Application.sqlite-jdbc-3.27.2.1.jar" />
         <item itemvalue="Application.Tester" />
         <item itemvalue="Application.App" />
       </list>
