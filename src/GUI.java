@@ -184,11 +184,7 @@ public class GUI extends JFrame {
         textField.setColumns(10);
 
         // prompts the user to enter their password in the text box
-<<<<<<< HEAD
         JLabel lblEnterYourLast = new JLabel("Create your password:");
-=======
-        lblEnterYourLast = new JLabel("Enter your password:");
->>>>>>> upstream/master
         lblEnterYourLast.setFont(new Font("Segoe UI Black", Font.BOLD, 25));
         lblEnterYourLast.setBounds(67, 244, 325, 50);
         contentPane.add(lblEnterYourLast);
