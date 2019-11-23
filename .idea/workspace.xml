@@ -4,12 +4,9 @@
     <list default="true" id="cdea6ff5-4889-4d17-b2ff-3765542ad392" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db.sqlite" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Account_a.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Account_a.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Database.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Database.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/GUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Student.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Student.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Teacher.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Teacher.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/db.sqlite" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />

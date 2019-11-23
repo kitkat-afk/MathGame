@@ -26,10 +26,18 @@ public class Database {
         }
 
         return con;
-
     }
 
+
+    /**
+     * Method to log into the Student table of the database.
+     * @param name  user's entered username
+     * @param password user's entered password
+     * @return the student file if found in database, or null if does not exist
+     */
     public Student login(String name, String password) {
+        name = name.trim();
+        password = password.trim();
         String sql = ("SELECT * FROM Students WHERE name = ? AND password = ?;");
 
         try (Connection con = this.connect(); PreparedStatement pstmt = con.prepareStatement(sql)) {
@@ -52,10 +60,18 @@ public class Database {
         return null;
     }
 
+
+
+    /**
+     * Method to create a new user. Defaults the values for attempted and correct answers to 0.
+     * @param name Name of the user
+     * @param pass Password of user
+     */
     public void newUser(String name, String pass) {
         String sql = ("INSERT INTO Students(name, password, correct, attempt) VALUES(\'"
-                + name + "\',\'" + pass + "\', 0, 0);");
+                + name.trim() + "\',\'" + pass.trim() + "\', 0, 0);");
 
+        //bugtesting, print to console the entered input
         System.out.println(sql);
 
         Connection c = this.connect();
@@ -73,26 +89,38 @@ public class Database {
     }
 
 
-    public void printAllStudents() {
+    /**
+     * Bugtesting function to print out the users currently stored in database. Will probably later be edited
+     * to display student stats for the teacher.
+     */
+    public String printAllStudents() {
         String sql = "SELECT * FROM Students";
+        String result = "";
 
         try(Connection con = this.connect(); PreparedStatement ptsmt = con.prepareStatement(sql)) {
             ResultSet rs = ptsmt.executeQuery();
 
             while(rs.next()) {
-                System.out.println(rs.getInt("ID") + "\t" +
+                result += (rs.getInt("ID") + "\t" +
                         rs.getString("name")  + "\t" +
                         rs.getString("password") + "\t" +
                         rs.getInt("correct") + "\t" +
-                        rs.getInt("attempt"));
+                        rs.getInt("attempt") + "\n");
             }
 
+            return result;
         }
         catch(SQLException e) {
             e.printStackTrace();
         }
+
+        return result;
     }
 
+    /**
+     * Unused method for removing a student from the database.
+     * @param name name of the user we want to delete
+     */
     public void deleteStudent(String name)
     {
         String sql = ("DELETE FROM Students WHERE name = \'" +  name + "\';");
@@ -116,6 +144,10 @@ public class Database {
 
     public static void main(String[] args) {
         Database db = new Database();
+        db.printAllStudents();
+        db.newUser("dad","pee");
+        db.printAllStudents();
+        db.deleteStudent("dad");
         db.printAllStudents();
     }
 

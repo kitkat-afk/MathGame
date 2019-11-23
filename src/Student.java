@@ -38,11 +38,11 @@ public class Student extends Account_a {
 
 
     public void setAnsAttempt(int ansAttempt) {
-        this.ansAttempt = ansAttempt;
+        this.ansAttempt += ansAttempt;
     }
 
     public void setAnsCorrect(int ansCorrect) {
-        this.ansCorrect = ansCorrect;
+        this.ansCorrect += ansCorrect;
     }
 
     public void setHP(int HP) {
