@@ -55,6 +55,12 @@ public class GUI extends JFrame {
         setVisible(true);
     }
 
+    private void jumpToLoadScreen() {
+        setVisible(false);
+        dispose();
+        loadScreen();
+        setVisible(true);
+    }
     /**
      * This method resets previous screen and displays the mathOrNumbersPlace method, which asks the user which game they wish to play.
      */
@@ -118,7 +124,7 @@ public class GUI extends JFrame {
         btnLoad.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent arg0) {
-                jumpToMathOrNumbersPlace();
+                jumpToLoadScreen();
             }
         });
         btnLoad.setBackground(new Color(245, 245, 220));
@@ -154,9 +160,6 @@ public class GUI extends JFrame {
      */
     public void newSelection() {
         JPanel contentPane;
-        JTextField textField;
-        JLabel lblEnterYourLast;
-        JTextField textField_1;
 
         // creates the main frame for the screen
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -170,33 +173,37 @@ public class GUI extends JFrame {
         // prompts the user to enter their first name in the text box
         JLabel lblEnterYourFirst = new JLabel("Enter your name:");
         lblEnterYourFirst.setFont(new Font("Segoe UI Black", Font.BOLD, 25));
-        lblEnterYourFirst.setBounds(78, 51, 325, 34);
+        lblEnterYourFirst.setBounds(67, 96, 325, 34);
         contentPane.add(lblEnterYourFirst);
 
         // the text field that the user can enter their name
-        textField = new JTextField();
-        textField.setBounds(77, 114, 286, 59);
+        JTextField textField = new JTextField();
         textField.setFont(new Font("Segoe UI Black", Font.BOLD, 24));
+        textField.setBounds(77, 155, 286, 59);
         contentPane.add(textField);
         textField.setColumns(10);
 
         // prompts the user to enter their password in the text box
+<<<<<<< HEAD
+        JLabel lblEnterYourLast = new JLabel("Create your password:");
+=======
         lblEnterYourLast = new JLabel("Enter your password:");
+>>>>>>> upstream/master
         lblEnterYourLast.setFont(new Font("Segoe UI Black", Font.BOLD, 25));
-        lblEnterYourLast.setBounds(78, 189, 286, 50);
+        lblEnterYourLast.setBounds(67, 244, 325, 50);
         contentPane.add(lblEnterYourLast);
 
-        // the text field that the user can enter their password
-        textField_1 = new JTextField();
-        textField_1.setBounds(78, 255, 285, 59);
-        textField_1.setFont(new Font("Segoe UI Black", Font.BOLD, 24));
+        // prompts the user to enter their password in the text box
+        JTextField textField_1 = new JTextField();
+        textField_1.setBounds(78, 308, 285, 59);
+        textField_1.setFont(new Font("Segoe UI Black", Font.BOLD, 25));
         contentPane.add(textField_1);
         textField_1.setColumns(10);
 
         // creating a submit button for the user to submit their information
         JButton btnSubmit = new JButton("Submit");
         btnSubmit.setFont(new Font("Segoe UI Black", Font.BOLD, 20));
-        btnSubmit.setBounds(629, 391, 134, 44);
+        btnSubmit.setBounds(617, 377, 134, 44);
         contentPane.add(btnSubmit);
         btnSubmit.addMouseListener(new MouseAdapter() {
             @Override
@@ -208,10 +215,10 @@ public class GUI extends JFrame {
         });
 
         // a back button that will go to the previous screen (which is the loginGUI - the one with New, Load, Quit page) method
-        JButton btnBack = new JButton("Back");
-        btnBack.setFont(new Font("Segoe UI Black", Font.BOLD, 16));
+        JButton btnNewButton = new JButton("Back");
+        btnNewButton.setFont(new Font("Segoe UI Black", Font.BOLD, 25));
         // when user clicks on back button, it will load the initial
-        btnBack.addMouseListener(new MouseAdapter() {
+        btnNewButton.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent arg0) {
                 setVisible(false);
@@ -220,8 +227,84 @@ public class GUI extends JFrame {
                 setVisible(true);
             }
         });
-        btnBack.setBounds(15, 399, 115, 29);
-        contentPane.add(btnBack);
+        btnNewButton.setBounds(41, 383, 170, 29);
+        contentPane.add(btnNewButton);
+
+        // label to prompt the user that this screen is to create an account
+        JLabel lblLogin = new JLabel("CREATE AN ACCOUNT");
+        lblLogin.setHorizontalAlignment(SwingConstants.CENTER);
+        lblLogin.setFont(new Font("Segoe UI Black", Font.BOLD, 35));
+        lblLogin.setBounds(158, 36, 453, 44);
+        contentPane.add(lblLogin);
+    }
+
+    /**
+     * This method is the screen after the user clicks 'load'. It will prompt the user for their name and password that they already
+     * created in the 'New' selection. It will load show their profile once they click the login button. Then it will prompt them to start
+     * the game.
+     */
+    public void loadScreen() {
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setBounds(100, 100, 800, 500);
+        JPanel contentPane = new JPanel();
+        contentPane.setBackground(new Color(224, 255, 255));
+        contentPane.setBorder(new MatteBorder(25, 25, 25, 25, (Color) new Color(248, 248, 255)));
+        setContentPane(contentPane);
+        contentPane.setLayout(null);
+
+        // first name of user
+        JLabel lblEnterYourFirst = new JLabel("Enter your first name:");
+        lblEnterYourFirst.setFont(new Font("Segoe UI Black", Font.BOLD, 25));
+        lblEnterYourFirst.setBounds(48, 91, 325, 34);
+        contentPane.add(lblEnterYourFirst);
+
+        // text field for user to enter name
+        JTextField textField = new JTextField();
+        textField.setFont(new Font("Segoe UI Black", Font.BOLD, 24));
+        textField.setBounds(48, 155, 286, 59);
+        contentPane.add(textField);
+        textField.setColumns(10);
+
+        // password of the user
+        JLabel lblEnterYourLast = new JLabel("Enter your password:");
+        lblEnterYourLast.setFont(new Font("Segoe UI Black", Font.BOLD, 25));
+        lblEnterYourLast.setBounds(48, 230, 286, 50);
+        contentPane.add(lblEnterYourLast);
+
+        // text field for user to enter the password
+        JTextField textField_1 = new JTextField();
+        textField_1.setBounds(49, 308, 285, 59);
+        textField_1.setFont(new Font("Segoe UI Black", Font.BOLD, 25));
+        contentPane.add(textField_1);
+        textField_1.setColumns(10);
+
+        // login button
+        JButton btnSubmit = new JButton("Login");
+        btnSubmit.setFont(new Font("Segoe UI Black", Font.BOLD, 20));
+        btnSubmit.setBounds(617, 377, 134, 44);
+        contentPane.add(btnSubmit);
+
+        // back button in case they clicked the wrong button
+        JButton btnNewButton = new JButton("Back");
+        btnNewButton.setFont(new Font("Segoe UI Black", Font.BOLD, 25));
+        btnNewButton.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent arg0) {
+                setVisible(false);
+                dispose();
+                loginGUI();
+                setVisible(true);
+            }
+        });
+        btnNewButton.setBounds(41, 383, 170, 29);
+        contentPane.add(btnNewButton);
+
+        // label to show this is the login screen
+        JLabel lblLogin = new JLabel("LOGIN");
+        lblLogin.setHorizontalAlignment(SwingConstants.CENTER);
+        lblLogin.setFont(new Font("Segoe UI Black", Font.BOLD, 35));
+        lblLogin.setBounds(310, 36, 154, 44);
+        contentPane.add(lblLogin);
     }
 
 
