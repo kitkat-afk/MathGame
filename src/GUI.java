@@ -206,7 +206,8 @@ public class GUI extends JFrame {
             public void mouseClicked(MouseEvent e) {
                 String username = textField.getText();
                 String password = textField_1.getText();
-                d.newUser(username, password);
+                if(d.newUser(username, password, 0)) { JOptionPane.showMessageDialog(contentPane, "Created successfully!"); }
+                else JOptionPane.showMessageDialog(contentPane, "Error.");
             }
         });
 
