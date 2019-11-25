@@ -5,7 +5,7 @@
  * @author Benjamin Williams
  */
 
-public abstract class Account_a {
+public class Account_a {
     public String name, password;
 
     public Account_a(String n, String p)

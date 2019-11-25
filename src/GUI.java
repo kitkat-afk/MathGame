@@ -1,4 +1,3 @@
-
 import java.awt.EventQueue;
 import java.awt.Font;
 import javax.swing.*;
@@ -61,6 +60,7 @@ public class GUI extends JFrame {
         loadScreen();
         setVisible(true);
     }
+
     /**
      * This method resets previous screen and displays the mathOrNumbersPlace method, which asks the user which game they wish to play.
      */
@@ -206,8 +206,9 @@ public class GUI extends JFrame {
             public void mouseClicked(MouseEvent e) {
                 String username = textField.getText();
                 String password = textField_1.getText();
-                if(d.newUser(username, password, 0)) { JOptionPane.showMessageDialog(contentPane, "Created successfully!"); }
-                else JOptionPane.showMessageDialog(contentPane, "Error.");
+                if (d.newUser(username, password, 0)) {
+                    JOptionPane.showMessageDialog(contentPane, "Created successfully!");
+                } else JOptionPane.showMessageDialog(contentPane, "Error.");
             }
         });
 
@@ -279,6 +280,23 @@ public class GUI extends JFrame {
         JButton btnSubmit = new JButton("Login");
         btnSubmit.setFont(new Font("Segoe UI Black", Font.BOLD, 20));
         btnSubmit.setBounds(617, 377, 134, 44);
+        btnSubmit.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                String username = textField.getText().trim();
+                String password = textField_1.getText().trim();
+                System.out.print(username + " " + password);
+
+                Student result = (Student)d.login(username, password, 0);
+                System.out.println(result);
+                if (result != null) {
+                    user = result;
+                    jumpToMathOrNumbersPlace();
+                } else if (result == null) {
+                    JOptionPane.showMessageDialog(contentPane, "Error: User not found.");
+                }
+            }
+        });
         contentPane.add(btnSubmit);
 
         // back button in case they clicked the wrong button
@@ -334,7 +352,7 @@ public class GUI extends JFrame {
         // this shows the progress bar at the top of the screen and changes every time the user gets an answer correct
         final JProgressBar progressBar = new JProgressBar(0, 100);
         progressBar.setBounds(270, 71, 238, 48);
-        progressBar.setValue(numberCorrect*10);
+        progressBar.setValue(numberCorrect * 10);
         progressBar.setStringPainted(true);
         contentPane.add(progressBar);
 
@@ -356,12 +374,12 @@ public class GUI extends JFrame {
                 if (equation.questionList[i].getSum() == Integer.parseInt(textField.getText())) {
                     JOptionPane.showMessageDialog(contentPane, "Right answer!");
                     numberCorrect++;
-                    } else {
+                } else {
                     JOptionPane.showMessageDialog(contentPane, "Wrong answer! The right answer was " + equation.questionList[i].getSum());
                 }
                 counter++;
                 // setting new value of the progress bar
-                progressBar.setValue(numberCorrect*10);
+                progressBar.setValue(numberCorrect * 10);
                 progressBar.setStringPainted(true);
 
                 // if, else statement will continue asking questions until the user reaches 10 questions
@@ -505,8 +523,9 @@ public class GUI extends JFrame {
 
     /**
      * This method checks if the user left the text box blank. It will catch an Illegal argument exception with a message box.
-     * @param contentPane       The current JPanel
-     * @param input             The input that the user entered
+     *
+     * @param contentPane The current JPanel
+     * @param input       The input that the user entered
      */
     private void checkIfEnteredAnything(JPanel contentPane, String input) {
         try {
@@ -519,8 +538,9 @@ public class GUI extends JFrame {
     /**
      * This method checks if the user enters a number that is too big to fit an integer or if they accidentally did not enter a number.
      * It will catch an Illegal argument exception with a message box.
-     * @param contentPane       The current JPanel
-     * @param input             The input that the user entered
+     *
+     * @param contentPane The current JPanel
+     * @param input       The input that the user entered
      */
     private void checkIfLegalNumber(JPanel contentPane, String input) {
         try {
