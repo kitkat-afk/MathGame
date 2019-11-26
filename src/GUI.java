@@ -159,7 +159,7 @@ public class GUI extends JFrame {
      * This is the screen that will show if the user hits the 'New' button on the initial startup
      */
     public void newSelection() {
-        JPanel contentPane;
+        final JPanel contentPane;
 
         // creates the main frame for the screen
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -177,7 +177,7 @@ public class GUI extends JFrame {
         contentPane.add(lblEnterYourFirst);
 
         // the text field that the user can enter their name
-        JTextField textField = new JTextField();
+        final JTextField textField = new JTextField();
         textField.setFont(new Font("Segoe UI Black", Font.BOLD, 24));
         textField.setBounds(77, 155, 286, 59);
         contentPane.add(textField);
@@ -190,7 +190,7 @@ public class GUI extends JFrame {
         contentPane.add(lblEnterYourLast);
 
         // prompts the user to enter their password in the text box
-        JTextField textField_1 = new JTextField();
+        final JTextField textField_1 = new JTextField();
         textField_1.setBounds(78, 308, 285, 59);
         textField_1.setFont(new Font("Segoe UI Black", Font.BOLD, 25));
         contentPane.add(textField_1);
@@ -208,6 +208,7 @@ public class GUI extends JFrame {
                 String password = textField_1.getText();
                 if (d.newUser(username, password, 0)) {
                     JOptionPane.showMessageDialog(contentPane, "Created successfully!");
+                    jumpToMathOrNumbersPlace();
                 } else JOptionPane.showMessageDialog(contentPane, "Error.");
             }
         });
@@ -244,7 +245,7 @@ public class GUI extends JFrame {
     public void loadScreen() {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(100, 100, 800, 500);
-        JPanel contentPane = new JPanel();
+        final JPanel contentPane = new JPanel();
         contentPane.setBackground(new Color(224, 255, 255));
         contentPane.setBorder(new MatteBorder(25, 25, 25, 25, (Color) new Color(248, 248, 255)));
         setContentPane(contentPane);
@@ -257,7 +258,7 @@ public class GUI extends JFrame {
         contentPane.add(lblEnterYourFirst);
 
         // text field for user to enter name
-        JTextField textField = new JTextField();
+        final JTextField textField = new JTextField();
         textField.setFont(new Font("Segoe UI Black", Font.BOLD, 24));
         textField.setBounds(48, 155, 286, 59);
         contentPane.add(textField);
@@ -270,7 +271,7 @@ public class GUI extends JFrame {
         contentPane.add(lblEnterYourLast);
 
         // text field for user to enter the password
-        JTextField textField_1 = new JTextField();
+        final JTextField textField_1 = new JTextField();
         textField_1.setBounds(49, 308, 285, 59);
         textField_1.setFont(new Font("Segoe UI Black", Font.BOLD, 25));
         contentPane.add(textField_1);
