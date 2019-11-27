@@ -164,4 +164,31 @@ public class Database {
         }
     }
 
+    public Boolean updateStudent(Student s)
+    {
+        int cor = s.getAnsCorrect(), atmpt = s.getAnsAttempt();
+        String n = s.getName();
+
+        String sql = "UPDATE Students SET correct = " + cor + ", attempt = " + atmpt + " WHERE name = \'" + n + "\';";
+        System.out.println(sql);
+
+        Connection c = this.connect();
+        Statement st = null;
+
+        try
+        {
+            st = c.createStatement();
+            st.executeUpdate(sql);
+            st.close();
+            c.close();
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+            return  false;
+        }
+
+        return true;
+    }
+
 }
