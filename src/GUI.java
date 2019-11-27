@@ -412,6 +412,8 @@ public class GUI extends JFrame {
         btnNewButton.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent arg0) {
+                pauseScreen();
+                setVisible(true);
             }
         });
         contentPane.add(btnNewButton);
@@ -519,6 +521,59 @@ public class GUI extends JFrame {
             }
         });
         contentPane.add(btnPlayAgain);
+
+        JButton btnHome = new JButton("Home");
+        btnHome.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent arg0) {
+                setVisible(false);
+                dispose();
+                loginGUI();
+                setVisible(true);
+            }
+        });
+        btnHome.setFont(new Font("Segoe UI Black", Font.BOLD, 16));
+        btnHome.setBounds(333, 359, 115, 29);
+        contentPane.add(btnHome);
+    }
+
+    private void pauseScreen() {
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setBounds(100, 100, 450, 300);
+        JPanel contentPane = new JPanel();
+        contentPane.setBackground(Color.ORANGE);
+        contentPane.setBorder(new LineBorder(new Color(255, 218, 185), 10));
+        setContentPane(contentPane);
+        contentPane.setLayout(null);
+
+        JLabel lblPause = new JLabel("PAUSE");
+        lblPause.setFont(new Font("Segoe UI Black", Font.BOLD, 30));
+        lblPause.setBounds(153, 32, 117, 56);
+        contentPane.add(lblPause);
+
+        JButton btnResume = new JButton("Resume");
+        btnResume.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent arg0) {
+                dispose();
+                jumpToArithmeticScreen();
+            }
+        });
+        btnResume.setFont(new Font("Segoe UI Black", Font.PLAIN, 16));
+        btnResume.setBounds(155, 116, 115, 29);
+        contentPane.add(btnResume);
+
+        JButton btnQuit = new JButton("Quit");
+        btnQuit.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                jumpToEndScreen();
+            }
+        });
+        btnQuit.setFont(new Font("Segoe UI Black", Font.PLAIN, 16));
+        btnQuit.setBounds(155, 173, 115, 29);
+        contentPane.add(btnQuit);
+
     }
 
 
