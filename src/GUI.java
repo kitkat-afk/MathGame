@@ -386,13 +386,9 @@ public class GUI extends JFrame {
                 if (counter == numberQuestions) {
                     // will jump to the 'Game Over' screen if the user reaches 10 questions
 
-                    //hey heads up, these are going to cause errors in the console
-                    //because the user variable is undefined
-                    //can't fix it until we have a login screen for me to code up
-                    //gomenasai
-                    // -- ben
                     user.setAnsAttempt(counter);
                     user.setAnsCorrect(numberCorrect);
+                    d.updateStudent(user);
 
                     jumpToEndScreen();
                 } else {
