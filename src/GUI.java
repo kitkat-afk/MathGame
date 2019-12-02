@@ -159,7 +159,7 @@ public class GUI extends JFrame {
      * This is the screen that will show if the user hits the 'New' button on the initial startup
      */
     public void newSelection() {
-        JPanel contentPane;
+        final JPanel contentPane;
 
         // creates the main frame for the screen
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -177,7 +177,7 @@ public class GUI extends JFrame {
         contentPane.add(lblEnterYourFirst);
 
         // the text field that the user can enter their name
-        JTextField textField = new JTextField();
+        final JTextField textField = new JTextField();
         textField.setFont(new Font("Segoe UI Black", Font.BOLD, 24));
         textField.setBounds(77, 155, 286, 59);
         contentPane.add(textField);
@@ -190,7 +190,7 @@ public class GUI extends JFrame {
         contentPane.add(lblEnterYourLast);
 
         // prompts the user to enter their password in the text box
-        JTextField textField_1 = new JTextField();
+        final JTextField textField_1 = new JTextField();
         textField_1.setBounds(78, 308, 285, 59);
         textField_1.setFont(new Font("Segoe UI Black", Font.BOLD, 25));
         contentPane.add(textField_1);
@@ -208,6 +208,7 @@ public class GUI extends JFrame {
                 String password = textField_1.getText();
                 if (d.newUser(username, password, 0)) {
                     JOptionPane.showMessageDialog(contentPane, "Created successfully!");
+                    jumpToMathOrNumbersPlace();
                 } else JOptionPane.showMessageDialog(contentPane, "Error.");
             }
         });
@@ -244,7 +245,7 @@ public class GUI extends JFrame {
     public void loadScreen() {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(100, 100, 800, 500);
-        JPanel contentPane = new JPanel();
+        final JPanel contentPane = new JPanel();
         contentPane.setBackground(new Color(224, 255, 255));
         contentPane.setBorder(new MatteBorder(25, 25, 25, 25, (Color) new Color(248, 248, 255)));
         setContentPane(contentPane);
@@ -257,7 +258,7 @@ public class GUI extends JFrame {
         contentPane.add(lblEnterYourFirst);
 
         // text field for user to enter name
-        JTextField textField = new JTextField();
+        final JTextField textField = new JTextField();
         textField.setFont(new Font("Segoe UI Black", Font.BOLD, 24));
         textField.setBounds(48, 155, 286, 59);
         contentPane.add(textField);
@@ -270,7 +271,7 @@ public class GUI extends JFrame {
         contentPane.add(lblEnterYourLast);
 
         // text field for user to enter the password
-        JTextField textField_1 = new JTextField();
+        final JTextField textField_1 = new JTextField();
         textField_1.setBounds(49, 308, 285, 59);
         textField_1.setFont(new Font("Segoe UI Black", Font.BOLD, 25));
         contentPane.add(textField_1);
@@ -407,6 +408,8 @@ public class GUI extends JFrame {
         btnNewButton.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent arg0) {
+                pauseScreen();
+                setVisible(true);
             }
         });
         contentPane.add(btnNewButton);
@@ -514,6 +517,59 @@ public class GUI extends JFrame {
             }
         });
         contentPane.add(btnPlayAgain);
+
+        JButton btnHome = new JButton("Home");
+        btnHome.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent arg0) {
+                setVisible(false);
+                dispose();
+                loginGUI();
+                setVisible(true);
+            }
+        });
+        btnHome.setFont(new Font("Segoe UI Black", Font.BOLD, 16));
+        btnHome.setBounds(333, 359, 115, 29);
+        contentPane.add(btnHome);
+    }
+
+    private void pauseScreen() {
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setBounds(100, 100, 450, 300);
+        JPanel contentPane = new JPanel();
+        contentPane.setBackground(Color.ORANGE);
+        contentPane.setBorder(new LineBorder(new Color(255, 218, 185), 10));
+        setContentPane(contentPane);
+        contentPane.setLayout(null);
+
+        JLabel lblPause = new JLabel("PAUSE");
+        lblPause.setFont(new Font("Segoe UI Black", Font.BOLD, 30));
+        lblPause.setBounds(153, 32, 117, 56);
+        contentPane.add(lblPause);
+
+        JButton btnResume = new JButton("Resume");
+        btnResume.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent arg0) {
+                dispose();
+                jumpToArithmeticScreen();
+            }
+        });
+        btnResume.setFont(new Font("Segoe UI Black", Font.PLAIN, 16));
+        btnResume.setBounds(155, 116, 115, 29);
+        contentPane.add(btnResume);
+
+        JButton btnQuit = new JButton("Quit");
+        btnQuit.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                jumpToEndScreen();
+            }
+        });
+        btnQuit.setFont(new Font("Segoe UI Black", Font.PLAIN, 16));
+        btnQuit.setBounds(155, 173, 115, 29);
+        contentPane.add(btnQuit);
+
     }
 
 
