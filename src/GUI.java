@@ -288,7 +288,7 @@ public class GUI extends JFrame {
                 String password = textField_1.getText().trim();
                 System.out.print(username + " " + password);
 
-                Student result = (Student)d.login(username, password, 0);
+                Student result = (Student) d.login(username, password, 0);
                 System.out.println(result);
                 if (result != null) {
                     user = result;
