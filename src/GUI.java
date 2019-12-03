@@ -160,7 +160,6 @@ public class GUI extends JFrame {
      */
     public void newSelection() {
         final JPanel contentPane;
-
         // creates the main frame for the screen
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(100, 100, 800, 500);
@@ -299,7 +298,6 @@ public class GUI extends JFrame {
             }
         });
         contentPane.add(btnSubmit);
-
         // back button in case they clicked the wrong button
         JButton btnNewButton = new JButton("Back");
         btnNewButton.setFont(new Font("Segoe UI Black", Font.BOLD, 25));
@@ -364,6 +362,7 @@ public class GUI extends JFrame {
         btnSubmit.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent arg0) {
+                int num = numberCorrect;
                 // this if, else statement checks if the user entered any numbers or if they entered a valid number
                 if (textField.getText().length() == 0) {
                     checkIfEnteredAnything(contentPane, textField.getText());
@@ -374,7 +373,8 @@ public class GUI extends JFrame {
                 // checking if the user input is correct or not
                 if (equation.questionList[i].getSum() == Integer.parseInt(textField.getText())) {
                     JOptionPane.showMessageDialog(contentPane, "Right answer!");
-                    numberCorrect++;
+                    num++;
+                    numberCorrect = num;
                 } else {
                     JOptionPane.showMessageDialog(contentPane, "Wrong answer! The right answer was " + equation.questionList[i].getSum());
                 }
@@ -386,15 +386,12 @@ public class GUI extends JFrame {
                 // if, else statement will continue asking questions until the user reaches 10 questions
                 if (counter == numberQuestions) {
                     // will jump to the 'Game Over' screen if the user reaches 10 questions
-
                     user.setAnsAttempt(counter);
                     user.setAnsCorrect(numberCorrect);
                     d.updateStudent(user);
-
                     jumpToEndScreen();
                 } else {
                     jumpToArithmeticScreen();
-                    arithmeticSelection();
                 }
             }
         });
@@ -531,6 +528,8 @@ public class GUI extends JFrame {
         btnHome.setFont(new Font("Segoe UI Black", Font.BOLD, 16));
         btnHome.setBounds(333, 359, 115, 29);
         contentPane.add(btnHome);
+        counter = 0;
+        numberCorrect = 0;
     }
 
     private void pauseScreen() {
