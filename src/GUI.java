@@ -12,7 +12,8 @@ public class GUI extends JFrame {
     private static final long serialVersionUID = 890643356112344L;
     MathGenerator equation = new MathGenerator();
     Database d = new Database();
-    Student user; //user that will be logged into on the login screen
+    Student stud; //user that will be logged into on the login screen
+    Teacher teach;
     private int counter = 0;
     private int numberQuestions = 10;
     private int numberCorrect = 0;
@@ -159,6 +160,12 @@ public class GUI extends JFrame {
         btnStudentProfiles.setFont(new Font("Segoe UI Black", Font.BOLD, 20));
         btnStudentProfiles.setBackground(new Color(245, 245, 245));
         btnStudentProfiles.setBounds(551, 344, 158, 29);
+        btnStudentProfiles.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                jumpToLoadScreen(1);
+            }
+        });
         contentPane.add(btnStudentProfiles);
     }
 
@@ -290,16 +297,27 @@ public class GUI extends JFrame {
         btnSubmit.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
+                Object result = null;
                 String username = textField.getText().trim();
                 String password = textField_1.getText().trim();
                 System.out.print(username + " " + password);
 
-                Student result = (Student) d.login(username, password, stuOrTeach);
+                if(stuOrTeach == 0) {
+                    result = (Student) d.login(username, password, stuOrTeach);
+                }
+                else
+                    result = (Teacher) d.login(username,password,stuOrTeach);
+
                 System.out.println(result);
-                if (result != null) {
-                    user = result;
+                if (result != null && stuOrTeach == 0) {
+                    stud = (Student)result;
                     jumpToMathOrNumbersPlace();
-                } else if (result == null) {
+                }
+                else if(result != null && stuOrTeach == 1) {
+                    teach = (Teacher)result;
+                    System.out.println("Teacher login completed.");
+                }
+                else if (result == null) {
                     JOptionPane.showMessageDialog(contentPane, "Error: User not found.");
                 }
             }
@@ -393,9 +411,9 @@ public class GUI extends JFrame {
                 // if, else statement will continue asking questions until the user reaches 10 questions
                 if (counter == numberQuestions) {
                     // will jump to the 'Game Over' screen if the user reaches 10 questions
-                    user.setAnsAttempt(counter);
-                    user.setAnsCorrect(numberCorrect);
-                    d.updateStudent(user);
+                    stud.setAnsAttempt(counter);
+                    stud.setAnsCorrect(numberCorrect);
+                    d.updateStudent(stud);
                     jumpToEndScreen();
                 } else {
                     jumpToArithmeticScreen();
@@ -553,12 +571,12 @@ public class GUI extends JFrame {
         setContentPane(contentPane);
         contentPane.setLayout(null);
 
-        JLabel lblName = new JLabel("Here are your stats, " + user.getName());
+        JLabel lblName = new JLabel("Here are your stats, " + stud.getName());
         lblName.setBounds(32, 32, 705, 57);
         lblName.setFont(new Font("Segoe UI Black", Font.BOLD, 30));
         contentPane.add(lblName);
 
-        JLabel lblNewLabel = new JLabel("Total Correct: " + user.getAnsCorrect() +"/" + user.getAnsAttempt());
+        JLabel lblNewLabel = new JLabel("Total Correct: " + stud.getAnsCorrect() +"/" + stud.getAnsAttempt());
         lblNewLabel.setFont(new Font("Segoe UI Black", Font.BOLD, 30));
         lblNewLabel.setBounds(32, 224, 705, 57);
         contentPane.add(lblNewLabel);
@@ -568,7 +586,7 @@ public class GUI extends JFrame {
         lblAnswerCorrectIn.setBounds(32, 167, 705, 57);
         contentPane.add(lblAnswerCorrectIn);
 
-        JLabel lblPercentageOfGame = new JLabel("Percentage of Game: " + user.getTotal() + "%");
+        JLabel lblPercentageOfGame = new JLabel("Percentage of Game: " + stud.getTotal() + "%");
         lblPercentageOfGame.setFont(new Font("Segoe UI Black", Font.BOLD, 30));
         lblPercentageOfGame.setBounds(27, 278, 710, 57);
         contentPane.add(lblPercentageOfGame);
