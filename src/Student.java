@@ -33,6 +33,8 @@ public class Student extends Account_a {
         return ansCorrect;
     }
 
+    public double getTotal() { return  (getAnsCorrect()*100/getAnsAttempt()); }
+
 
     //Setter Methods
 
@@ -43,10 +45,6 @@ public class Student extends Account_a {
 
     public void setAnsCorrect(int ansCorrect) {
         this.ansCorrect += ansCorrect;
-    }
-
-    public void setHP(int HP) {
-        this.HP = HP;
     }
 
 
