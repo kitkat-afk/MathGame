@@ -1,8 +1,11 @@
 import java.awt.EventQueue;
 import java.awt.Font;
 import javax.swing.*;
+import javax.swing.border.EmptyBorder;
 import javax.swing.border.MatteBorder;
 import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.border.LineBorder;
@@ -93,6 +96,13 @@ public class GUI extends JFrame {
         setVisible(false);
         dispose();
         teacherButtons();
+        setVisible(true);
+    }
+
+    private void jumpToDelete(){
+        setVisible(false);
+        dispose();
+        deleteStudent();
         setVisible(true);
     }
 
@@ -654,15 +664,15 @@ public class GUI extends JFrame {
         contentPane.setBorder(new LineBorder(new Color(0, 0, 0), 25, true));
         setContentPane(contentPane);
         contentPane.setLayout(null);
-
         JButton btnNewButton = new JButton("Delete Student");
         btnNewButton.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
+                jumpToDelete();
             }
         });
         btnNewButton.setFont(new Font("Segoe UI Black", Font.BOLD, 16));
-        btnNewButton.setBounds(317, 223, 163, 40);
+        btnNewButton.setBounds(299, 223, 195, 40);
         contentPane.add(btnNewButton);
 
         JButton btnNewButton_1 = new JButton("View Students");
@@ -672,19 +682,19 @@ public class GUI extends JFrame {
             }
         });
         btnNewButton_1.setFont(new Font("Segoe UI Black", Font.BOLD, 16));
-        btnNewButton_1.setBounds(317, 307, 163, 40);
+        btnNewButton_1.setBounds(299, 308, 195, 40);
         contentPane.add(btnNewButton_1);
 
         JButton btnNewButton_2 = new JButton("Add Student");
         btnNewButton_2.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent arg0) {
+                jumpToLoadScreen(0);
             }
         });
         btnNewButton_2.setFont(new Font("Segoe UI Black", Font.BOLD, 16));
-        btnNewButton_2.setBounds(317, 140, 163, 40);
+        btnNewButton_2.setBounds(299, 143, 195, 40);
         contentPane.add(btnNewButton_2);
-
         JLabel lblTeacherLogin = new JLabel("Teacher Login");
         lblTeacherLogin.setFont(new Font("Segoe UI Black", Font.BOLD, 30));
         lblTeacherLogin.setBounds(58, 54, 317, 51);
@@ -694,11 +704,53 @@ public class GUI extends JFrame {
         btnNewButton_3.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
+                setVisible(false);
+                dispose();
+                loginGUI();
+                setVisible(true);
             }
         });
         btnNewButton_3.setFont(new Font("Segoe UI Black", Font.BOLD, 16));
         btnNewButton_3.setBounds(31, 385, 115, 29);
         contentPane.add(btnNewButton_3);
+    }
+
+
+    public void deleteStudent() {
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setBounds(100, 100, 800, 500);
+        JPanel contentPane = new JPanel();
+        contentPane.setBackground(new Color(255, 182, 193));
+        contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+        setContentPane(contentPane);
+        contentPane.setLayout(null);
+
+        JLabel lblNewLabel = new JLabel("Delete Students");
+        lblNewLabel.setFont(new Font("Segoe UI Black", Font.BOLD, 35));
+        lblNewLabel.setBounds(15, 16, 410, 77);
+        contentPane.add(lblNewLabel);
+
+        JLabel lblEnterTheStudents = new JLabel("Enter the student's name:");
+        lblEnterTheStudents.setHorizontalAlignment(SwingConstants.CENTER);
+        lblEnterTheStudents.setFont(new Font("Segoe UI Black", Font.BOLD, 25));
+        lblEnterTheStudents.setBounds(201, 112, 389, 67);
+        contentPane.add(lblEnterTheStudents);
+
+        JTextField textField = new JTextField();
+        textField.setFont(new Font("Segoe UI Black", Font.BOLD, 18));
+        textField.setBounds(222, 195, 357, 54);
+        contentPane.add(textField);
+        textField.setColumns(10);
+
+        JButton btnDelete = new JButton("Delete");
+        btnDelete.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+            }
+        });
+        btnDelete.setFont(new Font("Segoe UI Black", Font.BOLD, 25));
+        btnDelete.setBounds(304, 293, 195, 43);
+        contentPane.add(btnDelete);
     }
 
 
