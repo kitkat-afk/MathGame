@@ -54,10 +54,10 @@ public class GUI extends JFrame {
         setVisible(true);
     }
 
-    private void jumpToLoadScreen() {
+    private void jumpToLoadScreen(int stuOrTeach) {
         setVisible(false);
         dispose();
-        loadScreen();
+        loadScreen(stuOrTeach);
         setVisible(true);
     }
 
@@ -131,7 +131,7 @@ public class GUI extends JFrame {
         btnLoad.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent arg0) {
-                jumpToLoadScreen();
+                jumpToLoadScreen(0);
             }
         });
         btnLoad.setBackground(new Color(245, 245, 220));
@@ -248,7 +248,7 @@ public class GUI extends JFrame {
      * created in the 'New' selection. It will load show their profile once they click the login button. Then it will prompt them to start
      * the game.
      */
-    public void loadScreen() {
+    public void loadScreen(int stuOrTeach) {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(100, 100, 800, 500);
         final JPanel contentPane = new JPanel();
@@ -294,7 +294,7 @@ public class GUI extends JFrame {
                 String password = textField_1.getText().trim();
                 System.out.print(username + " " + password);
 
-                Student result = (Student) d.login(username, password, 0);
+                Student result = (Student) d.login(username, password, stuOrTeach);
                 System.out.println(result);
                 if (result != null) {
                     user = result;
