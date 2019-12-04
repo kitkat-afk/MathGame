@@ -89,6 +89,12 @@ public class GUI extends JFrame {
         setVisible(true);
     }
 
+    private void jumpToTeacherButtons(){
+        setVisible(false);
+        dispose();
+        teacherButtons();
+        setVisible(true);
+    }
 
     /**
      * This class is the initial screen with the 'New', 'Load', and 'Quit' buttons.
@@ -316,6 +322,7 @@ public class GUI extends JFrame {
                 else if(result != null && stuOrTeach == 1) {
                     teach = (Teacher)result;
                     System.out.println("Teacher login completed.");
+                    jumpToTeacherButtons();
                 }
                 else if (result == null) {
                     JOptionPane.showMessageDialog(contentPane, "Error: User not found.");
@@ -630,20 +637,68 @@ public class GUI extends JFrame {
             }
         });
 
-
         btnHome.setFont(new Font("Segoe UI Black", Font.BOLD, 16));
         btnHome.setBounds(333, 359, 115, 29);
         contentPane.add(btnHome);
 
-
-
-
         counter = 0;
         numberCorrect = 0;
 
+    }
 
+    private void teacherButtons() {
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setBounds(100, 100, 800, 500);
+        JPanel contentPane = new JPanel();
+        contentPane.setBackground(new Color(255, 255, 0));
+        contentPane.setBorder(new LineBorder(new Color(0, 0, 0), 25, true));
+        setContentPane(contentPane);
+        contentPane.setLayout(null);
 
+        JButton btnNewButton = new JButton("Delete Student");
+        btnNewButton.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+            }
+        });
+        btnNewButton.setFont(new Font("Segoe UI Black", Font.BOLD, 16));
+        btnNewButton.setBounds(317, 223, 163, 40);
+        contentPane.add(btnNewButton);
 
+        JButton btnNewButton_1 = new JButton("View Students");
+        btnNewButton_1.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+            }
+        });
+        btnNewButton_1.setFont(new Font("Segoe UI Black", Font.BOLD, 16));
+        btnNewButton_1.setBounds(317, 307, 163, 40);
+        contentPane.add(btnNewButton_1);
+
+        JButton btnNewButton_2 = new JButton("Add Student");
+        btnNewButton_2.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent arg0) {
+            }
+        });
+        btnNewButton_2.setFont(new Font("Segoe UI Black", Font.BOLD, 16));
+        btnNewButton_2.setBounds(317, 140, 163, 40);
+        contentPane.add(btnNewButton_2);
+
+        JLabel lblTeacherLogin = new JLabel("Teacher Login");
+        lblTeacherLogin.setFont(new Font("Segoe UI Black", Font.BOLD, 30));
+        lblTeacherLogin.setBounds(58, 54, 317, 51);
+        contentPane.add(lblTeacherLogin);
+
+        JButton btnNewButton_3 = new JButton("Back");
+        btnNewButton_3.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+            }
+        });
+        btnNewButton_3.setFont(new Font("Segoe UI Black", Font.BOLD, 16));
+        btnNewButton_3.setBounds(31, 385, 115, 29);
+        contentPane.add(btnNewButton_3);
     }
 
 
