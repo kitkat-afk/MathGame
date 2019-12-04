@@ -7,7 +7,7 @@
  */
 
 public class Student extends Account_a {
-    public int HP, ansCorrect, ansAttempt;
+    public int ansCorrect, ansAttempt;
 
     //Note that difficulty is not saved by this class: this will be handled dynamically within the game itself.
 
@@ -16,14 +16,9 @@ public class Student extends Account_a {
         super(n,p);
         ansCorrect = 0;
         ansAttempt = 0;
-        HP = 100;
     }
 
     //Getter Methods
-
-    public int getHP() {
-        return HP;
-    }
 
     public int getAnsAttempt() {
         return ansAttempt;
@@ -51,7 +46,7 @@ public class Student extends Account_a {
 
     @Override
     public String toString() {
-        return (super.toString() + getHP() + "\n" + getAnsCorrect() + "\n" + getAnsAttempt());
+        return (super.toString() + getAnsCorrect() + "\n" + getAnsAttempt());
     }
 
 }
