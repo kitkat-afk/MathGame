@@ -760,6 +760,10 @@ public class GUI extends JFrame {
         btnDelete.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
+                if(d.deleteStudent(textField.getText().trim()))
+                    JOptionPane.showMessageDialog(contentPane, "Deleted successfully!");
+                else
+                    JOptionPane.showMessageDialog(contentPane, "Error: User does not exist.");
             }
         });
         btnDelete.setFont(new Font("Segoe UI Black", Font.BOLD, 25));
@@ -828,7 +832,6 @@ public class GUI extends JFrame {
                  String password = textField_1.getText();
                  if (d.newUser(username, password, 0)) {
                      JOptionPane.showMessageDialog(contentPane, "Created successfully!");
-                     jumpToMathOrNumbersPlace();
                  } else JOptionPane.showMessageDialog(contentPane, "Error.");
              }
          });
