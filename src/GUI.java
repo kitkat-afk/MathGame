@@ -1,9 +1,7 @@
-import java.awt.EventQueue;
-import java.awt.Font;
+import java.awt.*;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.MatteBorder;
-import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
@@ -110,6 +108,13 @@ public class GUI extends JFrame {
         setVisible(false);
         dispose();
         addStudent();
+        setVisible(true);
+    }
+
+    private void jumpToView(){
+        setVisible(false);
+        dispose();
+        view();
         setVisible(true);
     }
 
@@ -687,6 +692,7 @@ public class GUI extends JFrame {
         btnNewButton_1.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
+                jumpToView();
             }
         });
         btnNewButton_1.setFont(new Font("Segoe UI Black", Font.BOLD, 16));
@@ -851,12 +857,34 @@ public class GUI extends JFrame {
          contentPane.add(lblLogin);
      }
 
-    /**
-     * This method checks if the user left the text box blank. It will catch an Illegal argument exception with a message box.
-     *
-     * @param contentPane The current JPanel
-     * @param input       The input that the user entered
-     */
+    public void view() {
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setBounds(100, 100, 800, 500);
+        JPanel contentPane = new JPanel();
+        contentPane.setBackground(new Color(255, 228, 196));
+        contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+        setContentPane(contentPane);
+        contentPane.setLayout(null);
+
+        JLabel lblViewStudents = new JLabel("View Students");
+        lblViewStudents.setFont(new Font("Segoe UI Black", Font.BOLD, 25));
+        lblViewStudents.setBounds(15, 16, 210, 47);
+        contentPane.add(lblViewStudents);
+
+        ScrollPane scrollPane = new ScrollPane();
+        scrollPane.setBounds(10, 88, 758, 346);
+        JLabel data = new JLabel(d.printAllStudents());
+        scrollPane.add(data);
+        contentPane.add(scrollPane);
+    }
+
+
+        /**
+         * This method checks if the user left the text box blank. It will catch an Illegal argument exception with a message box.
+         *
+         * @param contentPane The current JPanel
+         * @param input       The input that the user entered
+         */
     private void checkIfEnteredAnything(JPanel contentPane, String input) {
         try {
             Integer.parseInt(input);
