@@ -12,7 +12,6 @@ public class Database {
     public static void main(String[] args) {
         Database db = new Database();
         System.out.println(db.printAllStudents());
-        System.out.println(db.login("godzilla","uranium",0));
 
     }
 
@@ -147,25 +146,29 @@ public class Database {
      *
      * @param name name of the user we want to delete
      */
-    public void deleteStudent(String name) {
+    public boolean deleteStudent(String name) {
         String sql = ("DELETE FROM Students WHERE name = \'" + name + "\';");
         System.out.println(sql);
 
         Connection c = this.connect();
         Statement s = null;
 
-        try {
-            s = c.createStatement();
-            s.executeUpdate(sql);
-            s.close();
-            c.close();
-        } catch (SQLException e) {
-            e.printStackTrace();
+        if (logicCheck(name)) {
+
+            try {
+                s = c.createStatement();
+                s.executeUpdate(sql);
+                s.close();
+                c.close();
+                return true;
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
+        return logicCheck(name);
     }
 
-    public Boolean updateStudent(Student s)
-    {
+    public boolean updateStudent(Student s) {
         int cor = s.getAnsCorrect(), atmpt = s.getAnsAttempt();
         String n = s.getName();
 
@@ -175,20 +178,29 @@ public class Database {
         Connection c = this.connect();
         Statement st = null;
 
-        try
-        {
+        try {
             st = c.createStatement();
             st.executeUpdate(sql);
             st.close();
             c.close();
-        }
-        catch (Exception e)
-        {
+        } catch (Exception e) {
             e.printStackTrace();
-            return  false;
+            return false;
         }
 
         return true;
     }
 
+    private boolean logicCheck(String name) {
+        String sql = "SELECT * FROM Students WHERE name = \'" + name + "\';";
+
+        try (Connection con = this.connect(); PreparedStatement pstmt = con.prepareStatement(sql)) {
+            ResultSet rs = pstmt.executeQuery();
+            return rs.next();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return false;
+    }
 }
