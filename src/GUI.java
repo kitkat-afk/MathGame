@@ -106,6 +106,13 @@ public class GUI extends JFrame {
         setVisible(true);
     }
 
+    private void jumpToAdd(){
+        setVisible(false);
+        dispose();
+        addStudent();
+        setVisible(true);
+    }
+
     /**
      * This class is the initial screen with the 'New', 'Load', and 'Quit' buttons.
      */
@@ -664,6 +671,7 @@ public class GUI extends JFrame {
         contentPane.setBorder(new LineBorder(new Color(0, 0, 0), 25, true));
         setContentPane(contentPane);
         contentPane.setLayout(null);
+
         JButton btnNewButton = new JButton("Delete Student");
         btnNewButton.addMouseListener(new MouseAdapter() {
             @Override
@@ -689,7 +697,7 @@ public class GUI extends JFrame {
         btnNewButton_2.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent arg0) {
-                jumpToLoadScreen(0);
+                jumpToAdd();
             }
         });
         btnNewButton_2.setFont(new Font("Segoe UI Black", Font.BOLD, 16));
@@ -751,8 +759,97 @@ public class GUI extends JFrame {
         btnDelete.setFont(new Font("Segoe UI Black", Font.BOLD, 25));
         btnDelete.setBounds(304, 293, 195, 43);
         contentPane.add(btnDelete);
+
+        JButton btnBack = new JButton("Back");
+        btnBack.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                jumpToTeacherButtons();
+            }
+        });
+        btnBack.setFont(new Font("Segoe UI Black", Font.BOLD, 16));
+        btnBack.setBounds(15, 399, 115, 29);
+        contentPane.add(btnBack);
     }
 
+
+     private void addStudent() {
+         final JPanel contentPane;
+         // creates the main frame for the screen
+         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+         setBounds(100, 100, 800, 500);
+         contentPane = new JPanel();
+         contentPane.setBackground(new Color(204, 153, 204));
+         contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+         setContentPane(contentPane);
+         contentPane.setLayout(null);
+
+         // prompts the user to enter their first name in the text box
+         JLabel lblEnterYourFirst = new JLabel("Enter student name:");
+         lblEnterYourFirst.setFont(new Font("Segoe UI Black", Font.BOLD, 25));
+         lblEnterYourFirst.setBounds(67, 96, 325, 34);
+         contentPane.add(lblEnterYourFirst);
+
+         // the text field that the user can enter their name
+         final JTextField textField = new JTextField();
+         textField.setFont(new Font("Segoe UI Black", Font.BOLD, 24));
+         textField.setBounds(77, 155, 286, 59);
+         contentPane.add(textField);
+         textField.setColumns(10);
+
+         // prompts the user to enter their password in the text box
+         JLabel lblEnterYourLast = new JLabel("Create their password:");
+         lblEnterYourLast.setFont(new Font("Segoe UI Black", Font.BOLD, 25));
+         lblEnterYourLast.setBounds(67, 244, 325, 50);
+         contentPane.add(lblEnterYourLast);
+
+         // prompts the user to enter their password in the text box
+         final JTextField textField_1 = new JTextField();
+         textField_1.setBounds(78, 308, 285, 59);
+         textField_1.setFont(new Font("Segoe UI Black", Font.BOLD, 25));
+         contentPane.add(textField_1);
+         textField_1.setColumns(10);
+
+         // creating a submit button for the user to submit their information
+         JButton btnSubmit = new JButton("Submit");
+         btnSubmit.setFont(new Font("Segoe UI Black", Font.BOLD, 20));
+         btnSubmit.setBounds(617, 377, 134, 44);
+         contentPane.add(btnSubmit);
+         btnSubmit.addMouseListener(new MouseAdapter() {
+             @Override
+             public void mouseClicked(MouseEvent e) {
+                 String username = textField.getText();
+                 String password = textField_1.getText();
+                 if (d.newUser(username, password, 0)) {
+                     JOptionPane.showMessageDialog(contentPane, "Created successfully!");
+                     jumpToMathOrNumbersPlace();
+                 } else JOptionPane.showMessageDialog(contentPane, "Error.");
+             }
+         });
+
+         // a back button that will go to the previous screen (which is the loginGUI - the one with New, Load, Quit page) method
+         JButton btnNewButton = new JButton("Back");
+         btnNewButton.setFont(new Font("Segoe UI Black", Font.BOLD, 25));
+         // when user clicks on back button, it will load the initial
+         btnNewButton.addMouseListener(new MouseAdapter() {
+             @Override
+             public void mouseClicked(MouseEvent arg0) {
+                 setVisible(false);
+                 dispose();
+                 jumpToTeacherButtons();
+                 setVisible(true);
+             }
+         });
+         btnNewButton.setBounds(41, 383, 170, 29);
+         contentPane.add(btnNewButton);
+
+         // label to prompt the user that this screen is to create an account
+         JLabel lblLogin = new JLabel("Add a Student");
+         lblLogin.setHorizontalAlignment(SwingConstants.CENTER);
+         lblLogin.setFont(new Font("Segoe UI Black", Font.BOLD, 35));
+         lblLogin.setBounds(158, 36, 453, 44);
+         contentPane.add(lblLogin);
+     }
 
     /**
      * This method checks if the user left the text box blank. It will catch an Illegal argument exception with a message box.
