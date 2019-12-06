@@ -1,4 +1,4 @@
-/**
+/**z
  * Generic class for all users of the game. Currently in testing stages. All it requires is name, username, and password.
  *
  * @version 11.21.2019
@@ -25,6 +25,6 @@ public class Account_a {
 
     @Override
     public String toString() {
-        return (getName() + "\n" + getPassword() + "\n");
+        return (getName()  + "\n");
     }
 }

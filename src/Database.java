@@ -128,9 +128,10 @@ public class Database {
             while (rs.next()) {
                 result += (rs.getInt("ID") + "\t" +
                         rs.getString("name") + "\t" +
-                        rs.getString("password") + "\t" +
                         rs.getInt("correct") + "\t" +
-                        rs.getInt("attempt") + "\n");
+                        rs.getInt("attempt"));
+
+                result = result + "\n";
             }
 
             return result;
