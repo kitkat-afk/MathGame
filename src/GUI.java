@@ -877,8 +877,23 @@ public class GUI extends JFrame {
         ScrollPane scrollPane = new ScrollPane();
         scrollPane.setBounds(10, 88, 758, 346);
         JLabel data = new JLabel(d.printAllStudents());
+        data.setFont(new Font("Segoe UI Black", Font.BOLD, 20));
+        data.setVerticalAlignment(SwingConstants.TOP);
         scrollPane.add(data);
         contentPane.add(scrollPane);
+
+
+        JButton btnBack = new JButton("Back");
+        btnBack.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent arg0) {
+                jumpToTeacherButtons();
+            }
+        });
+        btnBack.setFont(new Font("Segoe UI Black", Font.BOLD, 20));
+        btnBack.setBounds(648, 16, 115, 29);
+        contentPane.add(btnBack);
+
     }
 
 
