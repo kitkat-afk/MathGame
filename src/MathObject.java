@@ -12,6 +12,15 @@ public class MathObject {
         answerCorrect = true;
     }
 
+    public MathObject(int digitOne, int digitTwo, int place)
+    {
+        one = digitOne;
+        two = digitTwo;
+        sum = place;
+        op = 0;
+        answerCorrect = true;
+    }
+
     public int getOne() {
         return one;
     }

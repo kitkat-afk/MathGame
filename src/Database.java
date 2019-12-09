@@ -13,6 +13,28 @@ public class Database {
         Database db = new Database();
         System.out.println(db.printAllStudents());
 
+        MathGenerator mg = new MathGenerator();
+        MathObject[] mo = new MathObject[10];
+        mo = mg.generatePlacesQuestions();
+
+        for(int i = 0; i < mo.length; i++)
+        {
+            System.out.println("The number is: " + mo[i].getOne() + "" + mo[i].getTwo());
+
+            if(mo[i].getSum() == 0)
+            {
+                System.out.println("Enter the number in the ONES place!");
+                System.out.println(mo[i].getTwo());
+            }
+            else
+            {
+                System.out.println("Enter the number in the TENS place!");
+                System.out.println(mo[i].getOne());
+            }
+
+            System.out.println();
+        }
+
     }
 
     /**
