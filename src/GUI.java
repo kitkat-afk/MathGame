@@ -56,6 +56,13 @@ public class GUI extends JFrame {
         setVisible(true);
     }
 
+    private void jumpToNumbersPlace(){
+        setVisible(false);
+        dispose();
+        numberPlace();
+        setVisible(true);
+    }
+
     private void jumpToLoadScreen(int stuOrTeach) {
         setVisible(false);
         dispose();
@@ -391,7 +398,7 @@ public class GUI extends JFrame {
         contentPane.setLayout(null);
 
         // Showing user math problem
-        JLabel lblProblem = new JLabel("What is " + equation.generateEquation(50, 10)[0].askQuestion() + " ?");
+        JLabel lblProblem = new JLabel("What is " + equation.generateEquation(99, 10)[0].askQuestion() + " ?");
         lblProblem.setFont(new Font("Segoe UI Black", Font.BOLD, 40));
         lblProblem.setBounds(65, 184, 443, 48);
         contentPane.add(lblProblem);
@@ -464,6 +471,105 @@ public class GUI extends JFrame {
             }
         });
         contentPane.add(btnNewButton);
+
+    }
+
+    private void numberPlace() {
+        final JPanel contentPane = new JPanel();
+        final int i = 0;
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setBounds(100, 100, 800, 500);
+        contentPane.setBackground(new Color(255, 255, 204));
+        contentPane.setBorder(new LineBorder(new Color(255, 255, 102), 50, true));
+        setContentPane(contentPane);
+        contentPane.setLayout(null);
+
+        final MathObject[] mo = equation.generatePlacesQuestions();
+        JLabel lblProblem = new JLabel("The number is: " + mo[0].getOne() + mo[0].getTwo());
+        lblProblem.setFont(new Font("Segoe UI Black", Font.BOLD, 40));
+        lblProblem.setBounds(179, 147, 443, 48);
+        contentPane.add(lblProblem);
+
+        JLabel lblEnterTheNumber;
+        if(mo[i].getSum() == 0) {
+            lblEnterTheNumber = new JLabel("Enter the number in the ONES place!");
+        } else {
+            lblEnterTheNumber = new JLabel("Enter the number in the TENS place!");
+        }
+
+        lblEnterTheNumber.setHorizontalAlignment(SwingConstants.CENTER);
+        lblEnterTheNumber.setFont(new Font("Segoe UI Black", Font.BOLD, 30));
+        lblEnterTheNumber.setBounds(59, 55, 660, 76);
+        contentPane.add(lblEnterTheNumber);
+
+        final JTextField textField = new JTextField();
+        textField.setFont(new Font("Segoe UI Black", Font.BOLD, 30));
+        textField.setBounds(312, 211, 159, 56);
+        contentPane.add(textField);
+        textField.setColumns(10);
+
+        // this shows the progress bar at the top of the screen and changes every time the user gets an answer correct
+        final JProgressBar progressBar = new JProgressBar(0, 100);
+        progressBar.setBounds(269, 342, 238, 39);
+        progressBar.setValue(numberCorrect * 10);
+        progressBar.setStringPainted(true);
+        contentPane.add(progressBar);
+
+        // The submit button once the user answers the question to check if their answer is correct
+        JButton btnSubmit = new JButton("Submit");
+        btnSubmit.setBounds(551, 358, 170, 29);
+        btnSubmit.setFont(new Font("Segoe UI Black", Font.PLAIN, 25));
+        btnSubmit.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent arg0) {
+                int num = numberCorrect;
+                // this if, else statement checks if the user entered any numbers or if they entered a valid number
+                if (textField.getText().length() == 0) {
+                    checkIfEnteredAnything(contentPane, textField.getText());
+                } else {
+                    checkIfLegalNumber(contentPane, textField.getText());
+                }
+
+                // checking if the user input is correct or not
+//                if (Integer.parseInt(textField.getText()) == ) {
+//                    JOptionPane.showMessageDialog(contentPane, "Right answer!");
+//                    num++;
+//                    numberCorrect = num;
+//                } else {
+//                  //  JOptionPane.showMessageDialog(contentPane, "Wrong answer! The right answer was " + ;
+//                }
+                counter++;
+                // setting new value of the progress bar
+                progressBar.setValue(numberCorrect * 10);
+                progressBar.setStringPainted(true);
+
+                // if, else statement will continue asking questions until the user reaches 10 questions
+                if (counter == numberQuestions) {
+                    // will jump to the 'Game Over' screen if the user reaches 10 questions
+                    stud.setAnsAttempt(counter);
+                    stud.setAnsCorrect(numberCorrect);
+                    d.updateStudent(stud);
+                    jumpToEndScreen();
+                } else {
+                    jumpToNumbersPlace();
+                }
+            }
+        });
+        btnSubmit.setBounds(551, 358, 170, 29);
+        contentPane.add(btnSubmit);
+
+        // Shows the pause selection on the screen which will eventually have two buttons, one for resuming the game or one for quitting the game
+        JButton btnNewButton = new JButton("Pause");
+        btnNewButton.setFont(new Font("Segoe UI Black", Font.BOLD, 25));
+        btnNewButton.setBounds(57, 358, 170, 29);
+        btnNewButton.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent arg0) {
+                pauseScreen();
+                setVisible(true);
+            }
+        });
+        contentPane.add(btnNewButton);
     }
 
     /**
@@ -480,6 +586,12 @@ public class GUI extends JFrame {
 
         // A button for the 'Numbers Place' that will generate a game recognize numbers
         JButton btnNumbers = new JButton("Numbers Place");
+        btnNumbers.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent arg0) {
+                jumpToNumbersPlace();
+            }
+        });
         btnNumbers.setFont(new Font("Segoe UI Black", Font.BOLD, 25));
         btnNumbers.setBounds(451, 167, 252, 120);
         contentPane.add(btnNumbers);
@@ -733,7 +845,7 @@ public class GUI extends JFrame {
     public void deleteStudent() {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(100, 100, 800, 500);
-        JPanel contentPane = new JPanel();
+        final JPanel contentPane = new JPanel();
         contentPane.setBackground(new Color(255, 182, 193));
         contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
         setContentPane(contentPane);
@@ -750,7 +862,7 @@ public class GUI extends JFrame {
         lblEnterTheStudents.setBounds(201, 112, 389, 67);
         contentPane.add(lblEnterTheStudents);
 
-        JTextField textField = new JTextField();
+        final JTextField textField = new JTextField();
         textField.setFont(new Font("Segoe UI Black", Font.BOLD, 18));
         textField.setBounds(222, 195, 357, 54);
         contentPane.add(textField);
