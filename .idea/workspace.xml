@@ -3,9 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="cdea6ff5-4889-4d17-b2ff-3765542ad392" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Database.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Database.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/MathGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MathGenerator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/MathObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MathObject.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -54,7 +52,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.Database">
+  <component name="RunManager" selected="Application.GUI">
     <configuration name="App" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="App" />
       <module name="MathGame" />
@@ -89,8 +87,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Database" />
         <item itemvalue="Application.GUI" />
+        <item itemvalue="Application.Database" />
         <item itemvalue="JAR Application.sqlite-jdbc-3.27.2.1.jar" />
         <item itemvalue="Application.Tester" />
         <item itemvalue="Application.App" />
