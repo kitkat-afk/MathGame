@@ -695,13 +695,15 @@ public class GUI extends JFrame {
         btnQuit.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
+                if (stud.getAnsCorrect() == 0) {
+                    stud.ansAttempt = 1;
+                }
                 jumpToEndScreen();
             }
         });
         btnQuit.setFont(new Font("Segoe UI Black", Font.PLAIN, 16));
         btnQuit.setBounds(155, 173, 115, 29);
         contentPane.add(btnQuit);
-        jumpToShowStats();
     }
 
     private void showStats() {

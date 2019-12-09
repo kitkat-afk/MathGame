@@ -28,7 +28,7 @@ public class Student extends Account_a {
         return ansCorrect;
     }
 
-    public double getTotal() { return  (getAnsCorrect()*100/getAnsAttempt()); }
+    public double getTotal() { return  (getAnsCorrect() * 100/ getAnsAttempt() ); }
 
 
     //Setter Methods
