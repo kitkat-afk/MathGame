@@ -14,8 +14,7 @@ public class Database {
         System.out.println(db.printAllStudents());
 
         MathGenerator mg = new MathGenerator();
-        MathObject[] mo = new MathObject[10];
-        mo = mg.generatePlacesQuestions();
+        MathObject[] mo = mg.generatePlacesQuestions();
 
         for(int i = 0; i < mo.length; i++)
         {

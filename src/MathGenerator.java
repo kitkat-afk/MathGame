@@ -7,7 +7,8 @@ public class MathGenerator {
     //array of questions to fill out
 
     // constructor
-    public MathGenerator() { }
+    public MathGenerator() {
+    }
 
 
     /**
