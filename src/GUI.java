@@ -695,13 +695,15 @@ public class GUI extends JFrame {
         btnQuit.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
+                if (stud.getAnsCorrect() == 0) {
+                    stud.ansAttempt = 1;
+                }
                 jumpToEndScreen();
             }
         });
         btnQuit.setFont(new Font("Segoe UI Black", Font.PLAIN, 16));
         btnQuit.setBounds(155, 173, 115, 29);
         contentPane.add(btnQuit);
-        jumpToShowStats();
     }
 
     private void showStats() {
@@ -989,9 +991,8 @@ public class GUI extends JFrame {
 
         ScrollPane scrollPane = new ScrollPane();
         scrollPane.setBounds(10, 88, 758, 346);
-        JLabel data = new JLabel(d.printAllStudents());
+        JTextArea data = new JTextArea(d.printAllStudents());
         data.setFont(new Font("Segoe UI Black", Font.BOLD, 20));
-        data.setVerticalAlignment(SwingConstants.TOP);
         scrollPane.add(data);
         contentPane.add(scrollPane);
 
@@ -1006,6 +1007,27 @@ public class GUI extends JFrame {
         btnBack.setFont(new Font("Segoe UI Black", Font.BOLD, 20));
         btnBack.setBounds(648, 16, 115, 29);
         contentPane.add(btnBack);
+
+
+        JLabel lblIdNumber = new JLabel("ID Number");
+        lblIdNumber.setFont(new Font("Segoe UI Black", Font.BOLD, 16));
+        lblIdNumber.setBounds(15, 62, 106, 20);
+        contentPane.add(lblIdNumber);
+
+        JLabel lblName = new JLabel("Name");
+        lblName.setFont(new Font("Segoe UI Black", Font.BOLD, 16));
+        lblName.setBounds(170, 62, 69, 20);
+        contentPane.add(lblName);
+
+        JLabel lblNewLabel = new JLabel("Number Correct");
+        lblNewLabel.setFont(new Font("Segoe UI Black", Font.BOLD, 16));
+        lblNewLabel.setBounds(325, 62, 146, 20);
+        contentPane.add(lblNewLabel);
+
+        JLabel lblNewLabel_1 = new JLabel("Number Total");
+        lblNewLabel_1.setFont(new Font("Segoe UI Black", Font.BOLD, 16));
+        lblNewLabel_1.setBounds(500, 62, 127, 20);
+        contentPane.add(lblNewLabel_1);
 
     }
 
