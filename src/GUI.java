@@ -395,7 +395,7 @@ public class GUI extends JFrame {
         contentPane.setLayout(null);
 
         // Showing user math problem
-        JLabel lblProblem = new JLabel("What is " + equation.generateEquation(99, 10)[0].askQuestion() + " ?");
+        JLabel lblProblem = new JLabel("What is " + equation.generateEquation(50, 10)[0].askQuestion() + " ?");
         lblProblem.setFont(new Font("Segoe UI Black", Font.BOLD, 40));
         lblProblem.setBounds(65, 184, 443, 48);
         contentPane.add(lblProblem);
